@@ -1,0 +1,38 @@
+ 2024-07-08 11:57:41,651 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-08 11:57:41,735 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh 
+ 2024-07-08 11:58:26,296 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-08 11:58:32,383 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-08 11:58:32,545 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh 
+ 2024-07-08 11:58:57,406 - WARNING- Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002269660E9E0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /algcenter-yolov8-sl-fh?location=
+ 2024-07-08 11:58:59,859 - WARNING- Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002269660F340>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /algcenter-yolov8-sl-fh?location=
+ 2024-07-08 11:59:02,711 - WARNING- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002269660F4C0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /algcenter-yolov8-sl-fh?location=
+ 2024-07-08 11:59:06,346 - WARNING- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002269660F730>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /algcenter-yolov8-sl-fh?location=
+ 2024-07-08 11:59:11,586 - WARNING- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002269660F910>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')': /algcenter-yolov8-sl-fh?location=
+ 2024-07-08 11:59:58,509 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-08 11:59:58,679 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh 
+ 2024-07-08 12:00:08,510 - INFO- 创建桶:algcenter-yolov8-sl-fh111
+ 2024-07-08 12:00:08,554 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh111 
+ 2024-07-08 12:19:46,041 - INFO- 桶已存在:algcenter-yolov8-sl-fh111
+ 2024-07-08 12:19:46,507 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh111 
+ 2024-07-08 12:22:05,023 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh 
+ 2024-07-08 15:15:18,734 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh 
+ 2024-07-09 20:26:03,300 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-09 20:30:20,060 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-09 20:30:54,971 - INFO- 桶已存在:algcenter-yolov8-sl-fh
+ 2024-07-09 20:30:55,318 - INFO- 2.txt 上传至 algcenter-yolov8-sl-fh 
+ 2024-07-24 11:01:29,504 - INFO- 桶已存在:algcenter-min983
+ 2024-07-24 11:01:29,550 - INFO- logs/my_minio_log.log 上传至 algcenter-min983 
+ 2024-07-24 11:09:04,400 - INFO- 桶已存在:algcenter-abc983
+ 2024-07-24 11:09:04,495 - INFO- logs/my_minio_log.log 上传至 algcenter-abc983 
+ 2024-07-24 11:11:16,906 - INFO- 桶已存在:algcenter-abc983
+ 2024-07-24 11:11:16,937 - INFO- logs/my_minio_log.log 上传至 algcenter-abc983 
+ 2024-07-24 11:11:18,726 - INFO- 桶已存在:algcenter-abc983
+ 2024-07-24 11:11:18,771 - INFO- logs/my_minio_log.log 上传至 algcenter-abc983 
+ 2024-07-24 11:14:17,358 - INFO- 桶已存在:algcenter-abc983
+ 2024-07-24 11:14:17,398 - INFO- logs/my_minio_log.log 上传至 algcenter-abc983 
+ 2024-07-24 11:14:53,768 - INFO- 创建桶:algcenter-abc983
+ 2024-07-24 11:14:53,942 - INFO- logs/my_minio_log.log 上传至 algcenter-abc983 
+ 2024-07-24 11:20:18,543 - INFO- 创建桶:algcenter-abc983
+ 2024-07-24 11:20:18,592 - INFO- logs/my_minio_log.log 上传至 algcenter-abc983 
+ 2024-07-24 11:23:40,766 - INFO- 创建桶:algcenter-abc116
+ 2024-07-24 11:23:40,798 - INFO- logs/my_minio_log.log 上传至 algcenter-abc116 

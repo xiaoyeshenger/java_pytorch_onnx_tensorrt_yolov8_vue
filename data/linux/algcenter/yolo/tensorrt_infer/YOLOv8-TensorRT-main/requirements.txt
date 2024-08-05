@@ -1,0 +1,10 @@
+numpy<=1.23.5
+onnx
+onnxsim
+opencv-python
+torch
+torchvision
+ultralytics
+# tensorrt
+# cuda-python
+# pycuda

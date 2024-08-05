@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化Readme" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2YFQg5QM11GV6UUCeSCjvfV0ScI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/algorithmCenter/data/windows/algcenter/yolo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;e07a0e604e6298258d0e0c4761c98091&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaGitPro\algorithmCenter\data\windows\algcenter\yolo" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\linux\algcenter\yolo" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\algorithm_model" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\linux\model" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\linux\algcenter\yolo\tensorrt_infer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ideaGitPro\algorithmCenter\data\doc" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data" />
+      <recent name="E:\ideaGitPro\algorithmCenter\img" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\windows\algcenter" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\linux" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.kafuka.util" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="cn.kafuka.algorithm" />
+      <recent name="cn.kafuka.util" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.kafuka.dao" />
+      <recent name="cn.kafuka.bo.dto" />
+      <recent name="cn.kafuka.bo.po" />
+      <recent name="cn.kafuka.util" />
+      <recent name="cn.kafuka.algorithm" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AlgorithmCenterApplication">
+    <configuration name="ExecPythonUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.python.ExecPythonUtil" />
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StringUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.util.StringUtil" />
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoDetecJavaCvNew" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.algorithm.VideoDetecJavaCvNew" />
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <shortenClasspath name="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoDetecJavaCvNewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.kafuka.algorithm" />
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.algorithm.VideoDetecJavaCvNewTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoDetecJavaCvNewTest.execPushAndDectect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.kafuka.algorithm" />
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.algorithm.VideoDetecJavaCvNewTest" />
+      <option name="METHOD_NAME" value="execPushAndDectect" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <shortenClasspath name="ARGS_FILE" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlgorithmCenterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="algorithmCenter" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.kafuka.AlgorithmCenterApplication" />
+      <option name="VM_PARAMETERS" value="-Xms4096m -Xmx4096m -XX:PermSize=1024M -XX:MaxPermSize=2048M" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.StringUtil" />
+      <item itemvalue="Application.ExecPythonUtil" />
+      <item itemvalue="Application.VideoDetecJavaCvNew" />
+      <item itemvalue="JUnit.VideoDetecJavaCvNewTest" />
+      <item itemvalue="JUnit.VideoDetecJavaCvNewTest.execPushAndDectect" />
+      <item itemvalue="Spring Boot.AlgorithmCenterApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StringUtil" />
+        <item itemvalue="Application.ExecPythonUtil" />
+        <item itemvalue="JUnit.VideoDetecJavaCvNewTest" />
+        <item itemvalue="JUnit.VideoDetecJavaCvNewTest.execPushAndDectect" />
+        <item itemvalue="Application.VideoDetecJavaCvNew" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="" />
+      <created>1700118957957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700118957957</updated>
+      <workItem from="1700118959429" duration="36272000" />
+      <workItem from="1700465184808" duration="28000" />
+      <workItem from="1700467366816" duration="29515000" />
+      <workItem from="1700617513878" duration="35078000" />
+      <workItem from="1700826286687" duration="2227000" />
+      <workItem from="1700875703128" duration="4501000" />
+      <workItem from="1701078415672" duration="45882000" />
+      <workItem from="1701652997795" duration="21099000" />
+      <workItem from="1701755307965" duration="4748000" />
+      <workItem from="1701767982096" duration="1194000" />
+      <workItem from="1701770056596" duration="3548000" />
+      <workItem from="1701826160664" duration="10279000" />
+      <workItem from="1701851735366" duration="378000" />
+      <workItem from="1701853804069" duration="23656000" />
+      <workItem from="1702433992721" duration="689000" />
+      <workItem from="1702542132459" duration="1821000" />
+      <workItem from="1702605210807" duration="24000" />
+      <workItem from="1702972895126" duration="710000" />
+      <workItem from="1717378990235" duration="4439000" />
+      <workItem from="1717384084755" duration="28052000" />
+      <workItem from="1717422381974" duration="919000" />
+      <workItem from="1717423323894" duration="174000" />
+      <workItem from="1717423521292" duration="39639000" />
+      <workItem from="1717553225281" duration="36239000" />
+      <workItem from="1717746346650" duration="1493000" />
+      <workItem from="1717747995032" duration="805000" />
+      <workItem from="1717749012211" duration="39717000" />
+      <workItem from="1718327464834" duration="22121000" />
+      <workItem from="1719805379922" duration="41498000" />
+      <workItem from="1720158344472" duration="10891000" />
+      <workItem from="1720170671257" duration="1555000" />
+      <workItem from="1720172276036" duration="1449000" />
+      <workItem from="1720421487858" duration="744000" />
+      <workItem from="1720574649878" duration="4402000" />
+      <workItem from="1720579751203" duration="6470000" />
+      <workItem from="1720590302305" duration="33952000" />
+      <workItem from="1720684608905" duration="364000" />
+      <workItem from="1720685212262" duration="263000" />
+      <workItem from="1720749316653" duration="3066000" />
+      <workItem from="1720756313431" duration="1853000" />
+      <workItem from="1720778023023" duration="45030000" />
+      <workItem from="1721783295071" duration="2987000" />
+      <workItem from="1721787563727" duration="3680000" />
+      <workItem from="1722387966656" duration="2574000" />
+      <workItem from="1722396248857" duration="18000" />
+      <workItem from="1722413539885" duration="2833000" />
+      <workItem from="1722417936111" duration="803000" />
+      <workItem from="1722475167512" duration="5732000" />
+      <workItem from="1722587559461" duration="2413000" />
+      <workItem from="1722592764110" duration="7000" />
+      <workItem from="1722602649719" duration="2677000" />
+      <workItem from="1722817645796" duration="3947000" />
+      <workItem from="1722821706670" duration="222000" />
+      <workItem from="1722821945614" duration="459000" />
+      <workItem from="1722822421879" duration="1635000" />
+      <workItem from="1722824077362" duration="11000" />
+    </task>
+    <task id="LOCAL-00028" summary="优化shell 调用">
+      <created>1720158404075</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1720158404076</updated>
+    </task>
+    <task id="LOCAL-00029" summary="优化shell 调用">
+      <created>1720166833646</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1720166833646</updated>
+    </task>
+    <task id="LOCAL-00030" summary="优化shell 调用">
+      <created>1720167107637</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1720167107637</updated>
+    </task>
+    <task id="LOCAL-00031" summary="优化shell 调用">
+      <created>1720167768833</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1720167768833</updated>
+    </task>
+    <task id="LOCAL-00032" summary="优化shell 调用">
+      <created>1720172689015</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1720172689015</updated>
+    </task>
+    <task id="LOCAL-00033" summary="优化shell 调用">
+      <created>1720172991637</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1720172991637</updated>
+    </task>
+    <task id="LOCAL-00034" summary="优化shell 调用">
+      <created>1720173499651</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1720173499651</updated>
+    </task>
+    <task id="LOCAL-00035" summary="优化shell 调用">
+      <created>1720173508348</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1720173508348</updated>
+    </task>
+    <task id="LOCAL-00036" summary="优化shell 调用">
+      <created>1720173614016</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1720173614016</updated>
+    </task>
+    <task id="LOCAL-00037" summary="优化shell 调用">
+      <created>1720603692853</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1720603692853</updated>
+    </task>
+    <task id="LOCAL-00038" summary="优化shell 调用">
+      <created>1720604208232</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1720604208232</updated>
+    </task>
+    <task id="LOCAL-00039" summary="优化shell 调用">
+      <created>1720604386462</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1720604386462</updated>
+    </task>
+    <task id="LOCAL-00040" summary="优化shell 调用">
+      <created>1720604555198</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1720604555198</updated>
+    </task>
+    <task id="LOCAL-00041" summary="优化shell 调用">
+      <created>1720604699797</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1720604699797</updated>
+    </task>
+    <task id="LOCAL-00042" summary="优化shell 调用">
+      <created>1720605225197</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1720605225197</updated>
+    </task>
+    <task id="LOCAL-00043" summary="优化shell 调用">
+      <created>1720605295074</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1720605295074</updated>
+    </task>
+    <task id="LOCAL-00044" summary="优化shell 调用">
+      <created>1720606993047</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1720606993047</updated>
+    </task>
+    <task id="LOCAL-00045" summary="优化shell 调用">
+      <created>1720660566360</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1720660566360</updated>
+    </task>
+    <task id="LOCAL-00046" summary="优化shell 调用">
+      <created>1720661259189</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1720661259189</updated>
+    </task>
+    <task id="LOCAL-00047" summary="优化shell 调用">
+      <created>1720670114603</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1720670114603</updated>
+    </task>
+    <task id="LOCAL-00048" summary="优化shell 调用">
+      <created>1720677100961</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1720677100961</updated>
+    </task>
+    <task id="LOCAL-00049" summary="优化shell 调用">
+      <created>1720677467892</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1720677467892</updated>
+    </task>
+    <task id="LOCAL-00050" summary="优化shell 调用">
+      <created>1720678175550</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1720678175550</updated>
+    </task>
+    <task id="LOCAL-00051" summary="优化shell 调用">
+      <created>1720679177586</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1720679177586</updated>
+    </task>
+    <task id="LOCAL-00052" summary="优化shell 调用">
+      <created>1720680205826</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1720680205826</updated>
+    </task>
+    <task id="LOCAL-00053" summary="优化shell 调用">
+      <created>1720683340812</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1720683340812</updated>
+    </task>
+    <task id="LOCAL-00054" summary="优化shell 调用">
+      <created>1720683580305</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1720683580305</updated>
+    </task>
+    <task id="LOCAL-00055" summary="优化shell 调用">
+      <created>1720684181769</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1720684181769</updated>
+    </task>
+    <task id="LOCAL-00056" summary="优化shell 调用">
+      <created>1720684805826</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1720684805826</updated>
+    </task>
+    <task id="LOCAL-00057" summary="优化shell 调用">
+      <created>1720685439155</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1720685439155</updated>
+    </task>
+    <task id="LOCAL-00058" summary="优化shell 调用">
+      <created>1720754375795</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1720754375796</updated>
+    </task>
+    <task id="LOCAL-00059" summary="优化shell 调用">
+      <created>1720754467427</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1720754467427</updated>
+    </task>
+    <task id="LOCAL-00060" summary="优化shell 调用">
+      <created>1721005311166</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1721005311167</updated>
+    </task>
+    <task id="LOCAL-00061" summary="优化shell 调用">
+      <created>1721013927071</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1721013927072</updated>
+    </task>
+    <task id="LOCAL-00062" summary="优化shell 调用">
+      <created>1721092091043</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1721092091043</updated>
+    </task>
+    <task id="LOCAL-00063" summary="优化shell 调用">
+      <created>1721189412686</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1721189412686</updated>
+    </task>
+    <task id="LOCAL-00064" summary="优化shell 调用">
+      <created>1722388732136</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1722388732136</updated>
+    </task>
+    <task id="LOCAL-00065" summary="优化shell 调用">
+      <created>1722389766011</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1722389766011</updated>
+    </task>
+    <task id="LOCAL-00066" summary="优化python shell">
+      <created>1722416884201</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1722416884201</updated>
+    </task>
+    <task id="LOCAL-00067" summary="优化python shell">
+      <created>1722479380976</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1722479380976</updated>
+    </task>
+    <task id="LOCAL-00068" summary="优化python shell">
+      <created>1722480231023</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1722480231023</updated>
+    </task>
+    <task id="LOCAL-00069" summary="优化python shell">
+      <created>1722589358464</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1722589358465</updated>
+    </task>
+    <task id="LOCAL-00070" summary="优化Readme">
+      <created>1722589720068</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1722589720068</updated>
+    </task>
+    <task id="LOCAL-00071" summary="优化推理代码">
+      <created>1722606128389</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1722606128389</updated>
+    </task>
+    <task id="LOCAL-00072" summary="优化模型库">
+      <created>1722606393901</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1722606393901</updated>
+    </task>
+    <task id="LOCAL-00073" summary="优化模型库">
+      <created>1722606585303</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1722606585304</updated>
+    </task>
+    <task id="LOCAL-00074" summary="优化Readme">
+      <created>1722820935288</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1722820935289</updated>
+    </task>
+    <task id="LOCAL-00075" summary="优化Readme">
+      <created>1722822659117</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1722822659117</updated>
+    </task>
+    <task id="LOCAL-00076" summary="优化Readme">
+      <created>1722823548190</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1722823548190</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="init" />
+    <MESSAGE value="1112" />
+    <MESSAGE value="优化shell 调用" />
+    <MESSAGE value="优化python shell" />
+    <MESSAGE value="优化推理代码" />
+    <MESSAGE value="优化模型库" />
+    <MESSAGE value="优化Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化Readme" />
+  </component>
+</project>
