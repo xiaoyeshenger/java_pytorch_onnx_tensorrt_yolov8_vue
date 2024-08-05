@@ -130,12 +130,14 @@ src : 项目后端springboot代码
 
   (1).在Windows下安装推理环境并运行(根据自己计算机的硬件配置情况选择如下3种安装方式中的1种)
 
+
       **1**.安装python环境
-      1).电脑安装anaconda3(安装方法百度: Windows安装anaconda3  https://blog.csdn.net/zwLoneranger/article/details/138743242)
-      2).创建pyhton3.9虚拟环境 (conda create -n yolov8_env python=3.9)
+        1).电脑安装anaconda3(安装方法百度: Windows安装anaconda3  https://blog.csdn.net/zwLoneranger/article/details/138743242)
+        2).创建pyhton3.9虚拟环境 (conda create -n yolov8_env python=3.9)
+
 
       **2**.安装推理环境
-      1).计算机没有GPU显卡---使用onnxruntime的cpu版本进行推理
+        1).计算机没有GPU显卡---使用onnxruntime的cpu版本进行推理
         --1.电脑主机需要安装如下软件
             ①.opencv4.7.0 (安装方法百度: Windows安装opencv)
             ②.FFmpeg4.2.7 (安装方法百度: Windows安装FFmpeg)
@@ -147,7 +149,7 @@ src : 项目后端springboot代码
             ④.Onnxruntime-cpu1.16.1 (运行.onnx模型文件需要该依赖，此处安装cpu版本。安装方法: pip install onnxruntime-cpu==1.16.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/)
         
 
-      2).计算机有GPU显卡---使用onnxruntime的gpu版本进行推理
+        2).计算机有GPU显卡---使用onnxruntime的gpu版本进行推理
         --1.电脑主机需要安装如下软件
             ①.opencv4.7.0 (安装方法百度: Windows安装opencv)
             ②.FFmpeg4.2.7 (安装方法百度: Windows安装FFmpeg)
@@ -161,7 +163,7 @@ src : 项目后端springboot代码
             ④.Onnxruntime-gpu1.16.1 (运行.onnx模型文件需要该依赖，此处安装gpu版本。安装方法: pip install onnxruntime-gpu==1.16.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/)
         
 
-      3).计算机有GPU显卡,并且是Nvidia的显卡---使用Nvidia的Tensorrt进行推理加速(速度大于onnx推理,是目前推理速度最快的方式)
+        3).计算机有GPU显卡,并且是Nvidia的显卡---使用Nvidia的Tensorrt进行推理加速(速度大于onnx推理,是目前推理速度最快的方式)
         --1.电脑主机需要安装如下软件
             ①.opencv4.7.0 (安装方法百度: Windows安装opencv)
             ②.FFmpeg4.2.7 (安装方法百度: Windows安装FFmpeg)
@@ -169,15 +171,14 @@ src : 项目后端springboot代码
             ④.Cudnn8.6.0 (安装方法百度: Windows安装Cudnn)
             ⑤.Tensorrt8.5.1.7 (运行.engine模型文件需要该依赖。安装方法百度: Windows安装Tensorrt)
 
-      --2.由于推理代码是使用python语言运行,所以需要在Python环境(如Python3.9/Anaconda3/Miniconda)中安装如下依赖库:
+        --2.由于推理代码是使用python语言运行,所以需要在Python环境(如Python3.9/Anaconda3/Miniconda)中安装如下依赖库:
             ①.opencv-python4.9.0.80 (安装方法: pip install opencv-python==4.9.0.80 -i https://pypi.tuna.tsinghua.edu.cn/simple/)
             ②.torch2.0.1 + torchvision0.15.2 + torchaudio2.0.2 (安装方法: pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118)
             ③.yolov8 ultralytics (安装方法: pip install ultralytics==8.2.48 -i https://pypi.tuna.tsinghua.edu.cn/simple/)
             ④.Onnxruntime-gpu1.16.1 (运行.onnx模型文件需要该依赖，此处安装gpu版本。安装方法: pip install onnxruntime-gpu==1.16.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/)
 
 
-      **2**.本地IDEA中启动后端项目
-
+      **3**.本地IDEA中启动后端项目
         --1.修改mysql、mongoDB、redis、rocketmq、minio的连接地址
       
         --2.运行 AlgorithmCenterApplication.main(String[] args)以启动项目
