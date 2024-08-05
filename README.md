@@ -130,8 +130,11 @@ src : 项目后端springboot代码
 
   (1).在Windows下安装推理环境并运行(根据自己计算机的硬件配置情况选择如下3种安装方式中的1种)
 
-      **1**.安装推理环境
+      **1**.安装python环境
+      1).电脑安装anaconda3(安装方法百度: Windows安装anaconda3  https://blog.csdn.net/zwLoneranger/article/details/138743242)
+      2).创建pyhton3.9虚拟环境 (conda create -n yolov8_env python=3.9)
 
+      **2**.安装推理环境
       1).计算机没有GPU显卡---使用onnxruntime的cpu版本进行推理
         --1.电脑主机需要安装如下软件
             ①.opencv4.7.0 (安装方法百度: Windows安装opencv)
