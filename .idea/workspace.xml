@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化Readme" />
+    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化模型库">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -291,21 +293,7 @@
       <workItem from="1722821706670" duration="222000" />
       <workItem from="1722821945614" duration="459000" />
       <workItem from="1722822421879" duration="1635000" />
-      <workItem from="1722824077362" duration="11000" />
-    </task>
-    <task id="LOCAL-00028" summary="优化shell 调用">
-      <created>1720158404075</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1720158404076</updated>
-    </task>
-    <task id="LOCAL-00029" summary="优化shell 调用">
-      <created>1720166833646</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1720166833646</updated>
+      <workItem from="1722824077362" duration="2792000" />
     </task>
     <task id="LOCAL-00030" summary="优化shell 调用">
       <created>1720167107637</created>
@@ -636,7 +624,21 @@
       <option name="project" value="LOCAL" />
       <updated>1722823548190</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="优化Readme">
+      <created>1722824372202</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1722824372202</updated>
+    </task>
+    <task id="LOCAL-00078" summary="优化模型库">
+      <created>1722825714264</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1722825714264</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,8 +664,8 @@
     <MESSAGE value="优化shell 调用" />
     <MESSAGE value="优化python shell" />
     <MESSAGE value="优化推理代码" />
-    <MESSAGE value="优化模型库" />
     <MESSAGE value="优化Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化Readme" />
+    <MESSAGE value="优化模型库" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化模型库" />
   </component>
 </project>
