@@ -344,15 +344,15 @@ src : 项目后端springboot代码
 
 
 
-项目开源
+相关开源
 
-感谢常康的开源:Java-Onnx-Yolo
+常康:Java-Onnx-Yolo
 
 https://toscode.mulanos.cn/agricultureiot/yolo-onnx-java
 
 
 
-感谢xgc的开源:JavaVision
+xgc:JavaVision
 
 
 https://gitee.com/giteeClass/java-vision
