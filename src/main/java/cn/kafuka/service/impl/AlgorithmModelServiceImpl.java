@@ -4,6 +4,9 @@ import cn.kafuka.bo.po.AlgorithmTask;
 import cn.kafuka.mapper.AlgorithmTaskDynamicSqlSupport;
 import cn.kafuka.mapper.AlgorithmTaskMapper;
 import cn.kafuka.util.*;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
@@ -83,9 +86,18 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
         //(1)复制AlgorithmModelReqDto中的请求参数到AlgorithmModel
         AlgorithmModel algorithmModel = VoPoConverterUtil.copyProperties(algorithmModelReqDto, AlgorithmModel.class);
         algorithmModel.setOosUrl(minioUtil.getDefaultFileUrl());
-        algorithmModel.setLabelList(StringUtil.replaceBlankSpace(algorithmModelReqDto.getLabelList()));
 
-        //(2).获取到文件
+        //(2).标签列表(标签列表只能为字符串数组格式,如["person","car","bus"])
+        String labelList = StringUtil.replaceBlankSpace(algorithmModelReqDto.getLabelList());
+        try {
+            JSON.parseArray(labelList);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new IllegalArgumentException("标签列表只能为字符串数组格式,如[" + String.format("\"%s\"", "person") + "," + String.format("\"%s\"", "car") + "," + String.format("\"%s\"", "bus") +"]");
+        }
+        algorithmModel.setLabelList(labelList);
+
+        //(3).获取到文件
         MultipartFile targetFile = request.getFile("targetFile");
         if(ObjUtil.isEmpty(targetFile)){
             throw new IllegalArgumentException("模型文件不能为空");
@@ -213,7 +225,16 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
         //3.更新AlgorithmModel
         //(1)复制AlgorithmModelDto中的请求参数到AlgorithmModel
         VoPoConverterUtil.beanConverterNotNull(algorithmModelReqDto, algorithmModel);
-        algorithmModel.setLabelList(StringUtil.replaceBlankSpace(algorithmModelReqDto.getLabelList()));
+
+        //(2).标签列表(标签列表只能为字符串数组格式,如["person","car","bus"])
+        String labelList = StringUtil.replaceBlankSpace(algorithmModelReqDto.getLabelList());
+        try {
+            JSON.parseArray(labelList);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new IllegalArgumentException("标签列表只能为字符串数组格式,如[" + String.format("\"%s\"", "person") + "," + String.format("\"%s\"", "car") + "," + String.format("\"%s\"", "bus") +"]");
+        }
+        algorithmModel.setLabelList(labelList);
 
         //4.保存
         algorithmModelMapper.updateByPrimaryKey(algorithmModel);

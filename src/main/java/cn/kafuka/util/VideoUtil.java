@@ -7,10 +7,15 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class VideoUtil {
@@ -75,12 +80,83 @@ public class VideoUtil {
         return isAvailable;
     }
 
+
+
+    /**
+     * 视频能够正常播放
+     */
+    public static boolean isVideoPlayable(String videoUrl) {
+        try {
+            // 构建ffmpeg命令
+            String ffmpegCmd = "ffmpeg -v error -i \"" + videoUrl + "\" -f null /dev/null";
+            // 执行ffmpeg命令
+            Process process = Runtime.getRuntime().exec(ffmpegCmd);
+            // 等待命令执行完成
+            process.waitFor();
+            // 获取退出值
+            int exitValue = process.exitValue();
+            // 如果退出值为0，则视频可以播放
+            return exitValue == 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    /**
+     * 视频能够正常播放以及流媒体服务器是否能够连接成功
+     * 通过ffmpeg命令实现
+     */
+    public static Map<String, Object> isVideoPlayableAndStreamServerCanConnected(String videoUrl,String streamServerUrl) {
+        //String videoUrl = "rtmp://rtmp03open.ys7.com:1935/v3/openlive/C23417894_1_1?expire=1721459499&id=604329999037632512&t=139b1c456d8ae3df11063825a78ff5746834704d2199c6548bceda8370511ff6&ev=100";
+        //String videoUrl = "http://192.168.2.241:11080/stream/live/ori_ffmpeg05.live.flv";
+        //String streamServerUrl = "rtmp://192.168.2.242:11935/stream/live?sign=41db35390ddad33f83944f44b8b75ded";
+
+        List<String> cmdList = new ArrayList<>();
+        cmdList.add("ffmpeg");
+        cmdList.add("-v");
+        cmdList.add("error");
+        cmdList.add("-re");
+        cmdList.add("-i");
+        cmdList.add(videoUrl);
+        cmdList.add("-c");
+        cmdList.add("copy");
+        cmdList.add("-f");
+        cmdList.add("flv");
+        cmdList.add(streamServerUrl);
+
+        Map<String, Object> stringObjectMap = ShellCommandExecutorUtil.callProcess("./", cmdList);
+        return stringObjectMap;
+
+    }
+
+
+
 /*    public static void main(String[] args) {
-        String playUrl = "rtmp://rtmp03open.ys7.com:1935/v3/openlive/C23417894_1_1?expire=1721459499&id=604329999037632512&t=139b1c456d8ae3df11063825a78ff5746834704d2199c6548bceda8370511ff6&ev=100";
+
+
+        //String playUrl = "rtmp://rtmp03open.ys7.com:1935/v3/openlive/C23417894_1_1?expire=1721459499&id=604329999037632512&t=139b1c456d8ae3df11063825a78ff5746834704d2199c6548bceda8370511ff6&ev=100";
+        String playUrl = "http://192.168.2.241:11080/stream/live/ori_ffmpeg05.live.flv";
+        String streamServerUrl = "rtmp://192.168.2.241:11935/stream/live?sign=41db35390ddad33f83944f44b8b75ded";
+
         long startTime = System.currentTimeMillis();
-        Boolean videoCanPlayed = isVideoCanPlayed(playUrl);
+
+        Map<String, Object> stringObjectMap = isVideoPlayableAndStreamServerCanConnected(playUrl,streamServerUrl);
+        String msg = (String)stringObjectMap.get("msg");
+        Integer code = (Integer) stringObjectMap.get("code");
+        System.out.println("STEP1111------------->Video is playable msg: " + msg);
+        System.out.println("STEP2222------------->Video is playable code: " + code);
         long endTime = System.currentTimeMillis();
         System.out.println("耗时:"+(endTime-startTime)+"毫秒");
-        System.out.println("是否可播放:"+videoCanPlayed);
+
+        if(code != 0){
+            String returnMsg = "视频播放异常/连接流媒体服务器失败";
+            if(msg.contains("Server returned 404 Not Found")){
+                returnMsg = "视频无法打开,请输入正确的播放地址";
+            }
+            if(msg.contains("Cannot open connection tcp")){
+                returnMsg = "流媒体服务器连接失败,请联系管理员";
+            }
+            throw new IllegalArgumentException(returnMsg);
+        }
     }*/
 }

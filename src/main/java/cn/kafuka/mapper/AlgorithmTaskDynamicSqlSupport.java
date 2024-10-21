@@ -76,6 +76,22 @@ public final class AlgorithmTaskDynamicSqlSupport {
     public static final SqlColumn<Byte> taskStatus = algorithmTask.taskStatus;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<String> pid = algorithmTask.pid;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Long> pidStartTime = algorithmTask.pidStartTime;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Long> pidStopTime = algorithmTask.pidStopTime;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Integer> restartCount = algorithmTask.restartCount;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<String> restartMsg = algorithmTask.restartMsg;
+
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final SqlColumn<Long> createTime = algorithmTask.createTime;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -102,6 +118,7 @@ public final class AlgorithmTaskDynamicSqlSupport {
 
         public final SqlColumn<String> pushVideoPlayUrl = column("pushVideoPlay_url", JDBCType.VARCHAR);
 
+
         public final SqlColumn<String> streamServerUrl = column("streamServer_url", JDBCType.VARCHAR);
 
         public final SqlColumn<Integer> skipFrame = column("skip_frame", JDBCType.INTEGER);
@@ -109,6 +126,7 @@ public final class AlgorithmTaskDynamicSqlSupport {
         public final SqlColumn<Integer> pushFrequency = column("push_frequency", JDBCType.INTEGER);
 
         public final SqlColumn<String> workDir = column("work_dir", JDBCType.VARCHAR);
+
 
         public final SqlColumn<String> shellKey = column("shell_Key", JDBCType.VARCHAR);
 
@@ -123,6 +141,17 @@ public final class AlgorithmTaskDynamicSqlSupport {
         public final SqlColumn<Integer> orderNum = column("order_num", JDBCType.INTEGER);
 
         public final SqlColumn<Byte> taskStatus = column("task_status", JDBCType.TINYINT);
+
+        public final SqlColumn<String> pid = column("pid", JDBCType.VARCHAR);
+
+        public final SqlColumn<Long> pidStartTime = column("pidStart_time", JDBCType.BIGINT);
+
+        public final SqlColumn<Long> pidStopTime = column("pidStop_time", JDBCType.BIGINT);
+
+        public final SqlColumn<Integer> restartCount = column("restart_count", JDBCType.INTEGER);
+
+        public final SqlColumn<String> restartMsg = column("restart_msg", JDBCType.VARCHAR);
+
 
         public final SqlColumn<Long> createTime = column("create_time", JDBCType.BIGINT);
 

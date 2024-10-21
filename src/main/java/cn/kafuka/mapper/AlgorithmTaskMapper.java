@@ -76,6 +76,11 @@ public interface AlgorithmTaskMapper {
         @Result(column="latestAlarm_time", property="latestalArmTime", jdbcType=JdbcType.BIGINT),
         @Result(column="order_num", property="orderNum", jdbcType=JdbcType.INTEGER),
         @Result(column="task_status", property="taskStatus", jdbcType=JdbcType.TINYINT),
+        @Result(column="pid", property="pid", jdbcType=JdbcType.VARCHAR),
+        @Result(column="pidStart_time", property="pidStartTime", jdbcType=JdbcType.BIGINT),
+        @Result(column="pidStop_time", property="pidStopTime", jdbcType=JdbcType.BIGINT),
+        @Result(column="restart_count", property="restartCount", jdbcType=JdbcType.BIGINT),
+        @Result(column="restart_msg", property="restartMsg", jdbcType=JdbcType.VARCHAR),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.BIGINT)
     })
     List<AlgorithmTask> selectMany(SelectStatementProvider selectStatement);
@@ -128,6 +133,11 @@ public interface AlgorithmTaskMapper {
                 .map(latestalarmTime).toProperty("latestAlarmTime")
                 .map(orderNum).toProperty("orderNum")
                 .map(taskStatus).toProperty("taskStatus")
+                .map(pid).toProperty("pid")
+                .map(pidStartTime).toProperty("pidStartTime")
+                .map(pidStopTime).toProperty("pidStopTime")
+                .map(restartCount).toProperty("restartCount")
+                .map(restartMsg).toProperty("restartMsg")
                 .map(createTime).toProperty("createTime")
                 .build()
                 .render(RenderingStrategy.MYBATIS3));
@@ -158,6 +168,11 @@ public interface AlgorithmTaskMapper {
                 .map(latestalarmTime).toPropertyWhenPresent("latestalArmTime", record::getLatestAlarmTime)
                 .map(orderNum).toPropertyWhenPresent("orderNum", record::getOrderNum)
                 .map(taskStatus).toPropertyWhenPresent("taskStatus", record::getTaskStatus)
+                .map(pid).toPropertyWhenPresent("pid", record::getPid)
+                .map(pidStartTime).toPropertyWhenPresent("pidStartTime", record::getPidStartTime)
+                .map(pidStopTime).toPropertyWhenPresent("pidStopTime", record::getPidStopTime)
+                .map(restartCount).toPropertyWhenPresent("restartCount", record::getRestartCount)
+                .map(restartMsg).toPropertyWhenPresent("restartMsg", record::getRestartMsg)
                 .map(createTime).toPropertyWhenPresent("createTime", record::getCreateTime)
                 .build()
                 .render(RenderingStrategy.MYBATIS3));
@@ -165,25 +180,25 @@ public interface AlgorithmTaskMapper {
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<AlgorithmTask>> selectByExampleOne() {
-        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, createTime)
+        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<List<AlgorithmTask>>> selectByExample() {
-        return SelectDSL.selectWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir, shellKey,firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, createTime)
+        return SelectDSL.selectWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir, shellKey,firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<List<AlgorithmTask>>> selectDistinctByExample() {
-        return SelectDSL.selectDistinctWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, createTime)
+        return SelectDSL.selectDistinctWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default AlgorithmTask selectByPrimaryKey(Long id_) {
-        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, createTime)
+        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask)
                 .where(id, isEqualTo(id_))
                 .build()
@@ -214,6 +229,11 @@ public interface AlgorithmTaskMapper {
                 .set(latestalarmTime).equalTo(record::getLatestAlarmTime)
                 .set(orderNum).equalTo(record::getOrderNum)
                 .set(taskStatus).equalTo(record::getTaskStatus)
+                .set(pid).equalTo(record::getPid)
+                .set(pidStartTime).equalTo(record::getPidStartTime)
+                .set(pidStopTime).equalTo(record::getPidStopTime)
+                .set(restartCount).equalTo(record::getRestartCount)
+                .set(restartMsg).equalTo(record::getRestartMsg)
                 .set(createTime).equalTo(record::getCreateTime);
     }
 
@@ -241,6 +261,11 @@ public interface AlgorithmTaskMapper {
                 .set(latestalarmTime).equalToWhenPresent(record::getLatestAlarmTime)
                 .set(orderNum).equalToWhenPresent(record::getOrderNum)
                 .set(taskStatus).equalToWhenPresent(record::getTaskStatus)
+                .set(pid).equalToWhenPresent(record::getPid)
+                .set(pidStartTime).equalToWhenPresent(record::getPidStartTime)
+                .set(pidStopTime).equalToWhenPresent(record::getPidStopTime)
+                .set(restartCount).equalToWhenPresent(record::getRestartCount)
+                .set(restartMsg).equalToWhenPresent(record::getRestartMsg)
                 .set(createTime).equalToWhenPresent(record::getCreateTime);
     }
 
@@ -268,6 +293,11 @@ public interface AlgorithmTaskMapper {
                 .set(latestalarmTime).equalTo(record::getLatestAlarmTime)
                 .set(orderNum).equalTo(record::getOrderNum)
                 .set(taskStatus).equalTo(record::getTaskStatus)
+                .set(pid).equalTo(record::getPid)
+                .set(pidStartTime).equalTo(record::getPidStartTime)
+                .set(pidStopTime).equalTo(record::getPidStopTime)
+                .set(restartCount).equalTo(record::getRestartCount)
+                .set(restartMsg).equalTo(record::getRestartMsg)
                 .set(createTime).equalTo(record::getCreateTime)
                 .where(id, isEqualTo(record::getId))
                 .build()
@@ -298,6 +328,11 @@ public interface AlgorithmTaskMapper {
                 .set(latestalarmTime).equalToWhenPresent(record::getLatestAlarmTime)
                 .set(orderNum).equalToWhenPresent(record::getOrderNum)
                 .set(taskStatus).equalToWhenPresent(record::getTaskStatus)
+                .set(pid).equalToWhenPresent(record::getPid)
+                .set(pidStartTime).equalToWhenPresent(record::getPidStartTime)
+                .set(pidStopTime).equalToWhenPresent(record::getPidStopTime)
+                .set(restartCount).equalToWhenPresent(record::getRestartCount)
+                .set(restartMsg).equalToWhenPresent(record::getRestartMsg)
                 .set(createTime).equalToWhenPresent(record::getCreateTime)
                 .where(id, isEqualTo(record::getId))
                 .build()

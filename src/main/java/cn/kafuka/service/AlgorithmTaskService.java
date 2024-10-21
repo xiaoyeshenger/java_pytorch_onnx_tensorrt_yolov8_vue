@@ -1,5 +1,6 @@
 package cn.kafuka.service;
 
+import cn.kafuka.bo.dto.AlgorithmInferResultReqDto;
 import cn.kafuka.bo.dto.AlgorithmTaskStatusReqDto;
 import cn.kafuka.bo.vo.PageVo;
 import cn.kafuka.bo.dto.AlgorithmTaskReqDto;
@@ -79,4 +80,11 @@ public interface AlgorithmTaskService {
      * @Date 2023/11/23 14:06
      */
     Map<String, Object> setAlgorithmTaskStatus(AlgorithmTaskStatusReqDto algorithmTaskStatusReqDto);
+
+
+    /**
+     * @Description 接收推理结果并发送到rocketmq
+     * @Date 2023/11/23 14:06
+     */
+    Map<String, Object> receiveInferResultAndPushMq(AlgorithmInferResultReqDto algorithmInferResultReqDto);
 }

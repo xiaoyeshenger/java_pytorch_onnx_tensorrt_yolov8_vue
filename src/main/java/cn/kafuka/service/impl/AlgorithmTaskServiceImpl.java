@@ -1,11 +1,14 @@
 package cn.kafuka.service.impl;
 
+import cn.kafuka.bo.dto.AlgorithmInferResultReqDto;
 import cn.kafuka.bo.dto.AlgorithmTaskStatusReqDto;
 import cn.kafuka.bo.po.AlgorithmModel;
 import cn.kafuka.bo.po.Customer;
 import cn.kafuka.mapper.*;
 import cn.kafuka.util.ShellCommandExecutorUtil;
 import cn.kafuka.util.*;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.alibaba.excel.EasyExcel;
@@ -18,10 +21,14 @@ import cn.kafuka.excel.AlgorithmTaskExcelListener;
 import cn.kafuka.excel.AlgorithmTaskExcelVo;
 import cn.kafuka.excel.FieldDupValidator;
 import cn.kafuka.service.AlgorithmTaskService;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.client.producer.SendStatus;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
 import org.mybatis.dynamic.sql.update.UpdateDSL;
 import org.mybatis.dynamic.sql.update.UpdateModel;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.mybatis.dynamic.sql.select.MyBatis3SelectModelAdapter;
 import org.mybatis.dynamic.sql.select.QueryExpressionDSL;
@@ -78,6 +85,8 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
     private final AlgorithmModelMapper algorithmModelMapper;
 
     private final CustomerMapper customerMapper;
+
+    private final RocketMQTemplate rocketMQTemplate;
 
 
     @Override
@@ -481,21 +490,45 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         }
         String streamServerUrl = streamPushServer + streamServerUrlSuffix;
 
-        //(3).跳帧数量(默认为1=不跳帧)及推送频率(默认为60=每隔60秒推送一次推理结果给客户平台)
+        //5.推理配置
+        //(1).跳帧数量(默认为1=不跳帧)及推送频率(默认为60=每隔60秒推送一次推理结果给客户平台)
         Integer skipFrame = algorithmTask.getSkipFrame();
         if(ObjUtil.isEmpty(skipFrame)){
             throw new IllegalArgumentException("跳帧数量不能为空");
         }
 
+        //(2).检测结果图片及信息推送频率
         Integer pushFrequency = algorithmTask.getPushFrequency();
         if(ObjUtil.isEmpty(pushFrequency)){
             throw new IllegalArgumentException("推送频率不能为空");
         }
 
-        //5.操作系统
+        //(3).标签列表,并将标签列表构建为python的元组字符串，以便将标签列表作为参数传入到推理脚本
+        //--1.将字符串格式的数组转为列表
+        String labelListStr = algorithmModel.getLabelList();
+        JSONArray jsonArray;
+        try {
+            jsonArray= JSON.parseArray(labelListStr);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new IllegalArgumentException("标签列表只能为字符串数组格式,如[" + String.format("\"%s\"", "person") + "," + String.format("\"%s\"", "car") + "," + String.format("\"%s\"", "bus") +"]");
+        }
+        List<String> labelList = JSONObject.parseArray(jsonArray.toJSONString(),String.class);
+
+        //--2.将字符串列表转换为按逗号(,)分隔的字符串格式
+        String pythonTupleStr = String.join(",", labelList);
+
+
+        //(4).置信度阈值
+        float confThreshold = algorithmModel.getConfThreshold();
+
+        //(5).nms阈值
+        float nmsThreshold = algorithmModel.getNmsThreshold();
+
+        //6.操作系统
         String os = System.getProperty("os.name").toLowerCase();
 
-        //6.推理类型(tensorrt/onnx),模式使用tensorrt进行推理
+        //7.推理类型(tensorrt/onnx),模式使用tensorrt进行推理
         String inferType = "tensorrt";
         String oosUrl = algorithmModel.getOosUrl();
         if(oosUrl.endsWith(".onnx")){
@@ -529,19 +562,6 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
 
             //(1).启动任务
             if(reqTaskStatus == 1){
-                //1).使用javacv/opencv进行计算
-                //--1.标签列表
-                String labelList = algorithmModel.getLabelList();
-                String[] labels = labelList.split(",");
-
-                //--3.置信度阈值
-                //float confThreshold = algorithmModel.getConfThreshold();
-                //--4.nms阈值
-                //float nmsThreshold = algorithmModel.getNmsThreshold();
-                //--5.获取到模型文字的字节数组
-                //byte[] modelBytes = minioUtil.getBytes(bucketName,fileName);
-
-                //--6.默认使用tensorrt进行推理
                 if(inferType.equals("onnx")) {
                     //2).使用onnx进行推理运算---java调用shell/cmd脚本执行python yolo.py 进行计算
                     if (os.contains("linux")) {
@@ -585,6 +605,10 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                         cmdList.add(streamServerUrl);
                         cmdList.add(String.valueOf(skipFrame));
                         cmdList.add(String.valueOf(pushFrequency));
+                        cmdList.add(String.valueOf(confThreshold));
+                        cmdList.add(String.valueOf(nmsThreshold));
+                        cmdList.add(pythonTupleStr);
+                        cmdList.add(taskNo);
                         resultMap = ShellCommandExecutorUtil.callProcess(workDir + "tensorrt_infer/", cmdList);
                     }else {
                         List<String> cmdList = new ArrayList<>();
@@ -604,6 +628,10 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                         cmdList.add(streamServerUrl);
                         cmdList.add(String.valueOf(skipFrame));
                         cmdList.add(String.valueOf(pushFrequency));
+                        cmdList.add(String.valueOf(confThreshold));
+                        cmdList.add(String.valueOf(nmsThreshold));
+                        cmdList.add(pythonTupleStr);
+                        cmdList.add(taskNo);
                         resultMap = ShellCommandExecutorUtil.callProcess(workDir + "tensorrt_infer/",cmdList);
                     }
                 }
@@ -644,6 +672,9 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                         cmdList.add(streamServerUrl);
                         cmdList.add(String.valueOf(skipFrame));
                         cmdList.add(String.valueOf(pushFrequency));
+                        cmdList.add(String.valueOf(confThreshold));
+                        cmdList.add(String.valueOf(nmsThreshold));
+                        cmdList.add(pythonTupleStr);
                         resultMap = ShellCommandExecutorUtil.callProcess(workDir + "tensorrt_infer/",cmdList);
                     }else {
                         List<String> cmdList = new ArrayList<>();
@@ -675,6 +706,12 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                 }
                 update.set(AlgorithmTaskDynamicSqlSupport.latestexecTime).equalToWhenPresent(currentTimeMillis);
             }
+
+            if(reqTaskStatus == 0){
+                update.set(AlgorithmTaskDynamicSqlSupport.restartCount).equalToWhenPresent(0);
+                update.set(AlgorithmTaskDynamicSqlSupport.restartMsg).equalToNull();
+            }
+
             algorithmTaskMapper.update(update
                     .set(AlgorithmTaskDynamicSqlSupport.taskStatus).equalToWhenPresent(reqTaskStatus)
                     .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(taskNo))
@@ -682,8 +719,24 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                     .render(RenderingStrategies.MYBATIS3));
 
         }
+
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("msg", "设置计算任务状态成功");
+        return resultMap;
+    }
+
+    @Override
+    public Map<String, Object> receiveInferResultAndPushMq(AlgorithmInferResultReqDto algorithmInferResultReqDto) {
+
+        //1.将接收到的推理结果发送到rocketmq
+        SendResult sendResult = rocketMQTemplate.syncSend("inference_result", MessageBuilder.withPayload(algorithmInferResultReqDto).build());
+        if(!sendResult.getSendStatus().equals(SendStatus.SEND_OK)){
+            throw new IllegalArgumentException("Rocketmq InferenceResult 服务异常，请稍后再试!!");
+        }
+
+        //2.返回处理结果
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("msg", "接收推理结果成功");
         return resultMap;
     }
 

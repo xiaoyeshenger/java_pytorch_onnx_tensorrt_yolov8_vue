@@ -80,6 +80,21 @@ public class AlgorithmTask implements Serializable {
     @ApiModelProperty(value = "任务状态(0=停用,1=启用)")
     private Byte taskStatus;
 
+    @ApiModelProperty(value = "任务进程号")
+    private String pid;
+
+    @ApiModelProperty(value = "任务进程启动时间")
+    private Long pidStartTime;
+
+    @ApiModelProperty(value = "任务进程停止时间")
+    private Long pidStopTime;
+
+    @ApiModelProperty(value = "当前系统已经自动重启过的次数,运行异常时，后台会自动重启推理脚本并记录重启次数;在页面上手动关闭任务后改值重置为0")
+    private Integer restartCount;
+
+    @ApiModelProperty(value = "重启失败的原因")
+    private String restartMsg;
+
     @ApiModelProperty(value = "创建时间")
     private Long createTime;
 }

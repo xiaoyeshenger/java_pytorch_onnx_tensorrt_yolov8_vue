@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化Readme">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmInferResultReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/EmailSendUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/cn/kafuka/rocketMq/InferenceExceptionConsumerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/windows/algcenter/yolo/onnx_infer/logs/log_run_yolov8_detect_onnx.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/windows/algcenter/yolo/onnx_infer/logs/log_run_yolov8_detect_onnx.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/windows/algcenter/yolo/tensorrt_infer/gsis_util/push_minio_rocketmq_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/windows/algcenter/yolo/tensorrt_infer/gsis_util/push_minio_rocketmq_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlarmDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlarmDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskDynamicSqlSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskDynamicSqlSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceResultConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmModelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/ShellCommandExecutorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/ShellCommandExecutorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/VideoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/VideoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +36,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -60,7 +79,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/algorithmCenter/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/algorithmCenter/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -79,11 +98,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaGitPro\algorithmCenter\src\main\resources" />
       <recent name="E:\ideaGitPro\algorithmCenter\img" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\windows\algcenter\yolo" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\linux\algcenter\yolo" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\algorithm_model" />
-      <recent name="E:\ideaGitPro\algorithmCenter\data\linux\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ideaGitPro\algorithmCenter\data\doc" />
@@ -99,15 +118,16 @@
       <recent name="cn.kafuka.util" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cn.kafuka.rocketMq" />
       <recent name="cn.kafuka.algorithm" />
       <recent name="cn.kafuka.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.kafuka.dao" />
       <recent name="cn.kafuka.bo.dto" />
-      <recent name="cn.kafuka.bo.po" />
       <recent name="cn.kafuka.util" />
-      <recent name="cn.kafuka.algorithm" />
+      <recent name="cn.kafuka.rocketMq" />
+      <recent name="cn.kafuka.dao" />
+      <recent name="cn.kafuka.bo.po" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AlgorithmCenterApplication">
@@ -139,13 +159,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VideoDetecJavaCvNew" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.kafuka.algorithm.VideoDetecJavaCvNew" />
+    <configuration name="VideoUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.util.VideoUtil" />
       <module name="algorithmCenter" />
       <shortenClasspath name="ARGS_FILE" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.kafuka.algorithm.*" />
+          <option name="PATTERN" value="cn.kafuka.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -155,6 +175,23 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <shortenClasspath name="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InferenceExceptionConsumerTest.sendMsg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.rocketMq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.kafuka.rocketMq" />
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.rocketMq.InferenceExceptionConsumerTest" />
+      <option name="METHOD_NAME" value="sendMsg" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,23 +208,6 @@
       <option name="PACKAGE_NAME" value="cn.kafuka.algorithm" />
       <option name="MAIN_CLASS_NAME" value="cn.kafuka.algorithm.VideoDetecJavaCvNewTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VideoDetecJavaCvNewTest.execPushAndDectect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="algorithmCenter" />
-      <shortenClasspath name="ARGS_FILE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.kafuka.algorithm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.kafuka.algorithm" />
-      <option name="MAIN_CLASS_NAME" value="cn.kafuka.algorithm.VideoDetecJavaCvNewTest" />
-      <option name="METHOD_NAME" value="execPushAndDectect" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -215,20 +235,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.VideoUtil" />
       <item itemvalue="Application.ExecPythonUtil" />
       <item itemvalue="Application.StringUtil" />
-      <item itemvalue="Application.VideoDetecJavaCvNew" />
+      <item itemvalue="JUnit.InferenceExceptionConsumerTest.sendMsg" />
       <item itemvalue="JUnit.VideoDetecJavaCvNewTest" />
-      <item itemvalue="JUnit.VideoDetecJavaCvNewTest.execPushAndDectect" />
       <item itemvalue="Spring Boot.AlgorithmCenterApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.StringUtil" />
+        <item itemvalue="JUnit.InferenceExceptionConsumerTest.sendMsg" />
+        <item itemvalue="Application.VideoUtil" />
         <item itemvalue="Application.ExecPythonUtil" />
         <item itemvalue="JUnit.VideoDetecJavaCvNewTest" />
-        <item itemvalue="JUnit.VideoDetecJavaCvNewTest.execPushAndDectect" />
-        <item itemvalue="Application.VideoDetecJavaCvNew" />
       </list>
     </recent_temporary>
   </component>
@@ -301,14 +321,15 @@
       <workItem from="1723770727807" duration="1232000" />
       <workItem from="1724223477454" duration="111000" />
       <workItem from="1724392158929" duration="3000" />
-      <workItem from="1724658918052" duration="111000" />
-    </task>
-    <task id="LOCAL-00035" summary="优化shell 调用">
-      <created>1720173508348</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1720173508348</updated>
+      <workItem from="1724658918052" duration="220000" />
+      <workItem from="1725346465175" duration="52906000" />
+      <workItem from="1725515163537" duration="5198000" />
+      <workItem from="1726293877457" duration="7554000" />
+      <workItem from="1726795872140" duration="4574000" />
+      <workItem from="1727579723987" duration="5230000" />
+      <workItem from="1728696932917" duration="339000" />
+      <workItem from="1728865566147" duration="1318000" />
+      <workItem from="1729479220910" duration="3479000" />
     </task>
     <task id="LOCAL-00036" summary="优化shell 调用">
       <created>1720173614016</created>
@@ -646,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1722843659611</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="优化Readme">
+      <created>1724659058607</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1724659058608</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

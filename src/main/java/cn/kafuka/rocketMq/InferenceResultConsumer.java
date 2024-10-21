@@ -9,9 +9,11 @@ import cn.kafuka.util.IdWorker;
 import com.alibaba.fastjson.JSONObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.apache.rocketmq.spring.core.RocketMQPushConsumerLifecycleListener;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ExecutorService;
@@ -19,7 +21,7 @@ import java.util.concurrent.ExecutorService;
 
 /**
  * @author zhangyong
- * @description AI推理消费者
+ * @description AI推理结果数据消费者
  * @date xxxx/2/28 20:30
  * @param
  * @return
@@ -27,8 +29,8 @@ import java.util.concurrent.ExecutorService;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@RocketMQMessageListener(consumerGroup = "${rocketmq.consumer.mygroup}", topic = "${rocketmq.consumer.mytopic}")
-public class InferenceConsumer implements RocketMQListener<MessageExt> {
+@RocketMQMessageListener(consumerGroup = "${rocketmq.consumer.inference_result_group}", topic = "${rocketmq.consumer.result_topic}")
+public class InferenceResultConsumer implements RocketMQListener<MessageExt> {
 
     private final ExecutorService executorService;
 
@@ -37,6 +39,7 @@ public class InferenceConsumer implements RocketMQListener<MessageExt> {
     private final HttpPushLogService httpPushLogService;
 
     private final AlarmDataService alarmDataService;
+
 
     @Override
     public void onMessage(MessageExt messageExt) {
@@ -51,7 +54,7 @@ public class InferenceConsumer implements RocketMQListener<MessageExt> {
 
         //3.连续消费3次都失败,存入数据库进行人工干预
         if(messageExt.getReconsumeTimes() == 3){
-            log.error("step1 ------> {} rocketmq连续消费3次都失败,请检查原因!!!", jsonObject.toString());
+            log.error("step1 ------> {} rocketmq InferenceResult 连续消费3次都失败,请检查原因!!!", jsonObject.toString());
             Long currentTime = System.currentTimeMillis();
             RocketMqFailMsg rocketMqFailMsg = RocketMqFailMsg.builder()
                     .id(new IdWorker().nextId())
@@ -82,5 +85,6 @@ public class InferenceConsumer implements RocketMQListener<MessageExt> {
             httpPushLogService.pushInferenceResultToCustomer(taskNo,jsonObject);
         });
     }
+
 }
 

@@ -50,14 +50,12 @@ public class ShellCommandExecutorUtil {
             }
             String line;
             while ((line = reader.readLine()) != null) {
-                //System.out.println(line);
                 output.append(line).append("\n");
             }
-            //System.out.println(output.toString());
 
             int exitCode = process.waitFor();
             if (exitCode == 0) {
-                log.info("step2 ---> 调用shell/cmd成功,code:{},msg:{}",0,output);
+                log.info("step2 ---> 调用shell/cmd成功,code:{},msg:{}",exitCode,output);
             } else {
                 log.info("step2 ---> 调用shell/cmd失败,code:{},msg:{}",exitCode,output);
             }

@@ -14,6 +14,7 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static java.util.regex.Pattern.compile;
 import static org.apache.commons.lang3.StringUtils.containsIgnoreCase;
@@ -1030,9 +1031,13 @@ public class StringUtil {
     }
 
 /*    public static void main(String[] args) throws IOException {
-        String aa = "/algorithmmodel/809de03622bd442299c99e3df9d0.onnx";
-        boolean b = aa.endsWith(".onnx");
-        System.out.println("b：----> "+b);
+        List<String> strings = Arrays.asList("Hello", "World", "Java");
+
+        List<String> quotedStrings = strings.stream()
+                .map(s -> "'" + s + "'")
+                .collect(Collectors.toList());
+
+        System.out.println(quotedStrings);
     }*/
 
 }

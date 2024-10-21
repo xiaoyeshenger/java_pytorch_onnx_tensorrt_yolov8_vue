@@ -1,13 +1,19 @@
 package cn.kafuka.controller;
 
 import cn.kafuka.bo.dto.*;
+import cn.kafuka.bo.po.AlgorithmModel;
 import cn.kafuka.bo.vo.PageVo;
 import cn.kafuka.bo.vo.ResultVo;
+import cn.kafuka.mapper.AlgorithmModelMapper;
 import cn.kafuka.util.ShellCommandExecutorUtil;
 import cn.kafuka.service.AlgorithmTaskService;
 import cn.kafuka.enums.BusinessType;
+import cn.kafuka.util.StringUtil;
 import cn.kafuka.valid.ValidationGroup;
 import cn.kafuka.valid.ValidationGroup.ValidationUpdate;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.*;
@@ -18,8 +24,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
+import java.util.stream.Collectors;
 
 
 /**
@@ -40,6 +49,8 @@ public class AlgorithmTaskController {
     private final ExecutorService executorService;
 
     private final AlgorithmTaskService algorithmTaskService;
+
+    private final AlgorithmModelMapper algorithmModelMapper;
 
 
     /**
@@ -193,6 +204,76 @@ public class AlgorithmTaskController {
             ShellCommandExecutorUtil.callProcess(shellCmdReqDto.getWorkDir(),shellCmdReqDto.getCmdList());
         });
         return ResultVo.ok();
+    }
+
+    @Log(businessType = BusinessType.UPDATE)
+    @ApiOperation("测试命令行执行")
+    @PostMapping(value = "callShellScriptTest", produces = {"application/json"})
+    public ResultVo<Map<String, Object>> callShellScript(@RequestBody Map<String,Object> map) {
+
+        //String workDir = "D:/ProgramData/miniconda3/envs/yolo_env/myYoloPro/py_cpp_yolov8/";
+        String workDir = (String)map.get("workDir");
+
+        String shelKey = (String)map.get("shelKey");
+
+        String modelIdStr = (String)map.get("modelId");
+        Long modelId = Long.parseLong(modelIdStr);
+        AlgorithmModel algorithmModel = algorithmModelMapper.selectByPrimaryKey(modelId);
+        String labelListStr = algorithmModel.getLabelList();
+        JSONArray jsonArray;
+        try {
+            jsonArray= JSON.parseArray(labelListStr);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new IllegalArgumentException("标签列表只能为字符串数组格式,如[" + String.format("\"%s\"", "person") + "," + String.format("\"%s\"", "car") + "," + String.format("\"%s\"", "bus") +"]");
+        }
+
+        //--1.获取到模型的标签列表
+        List<String> labelList = JSONObject.parseArray(jsonArray.toJSONString(),String.class);
+
+        //--2.将字符串列表转换为按逗号(,)分隔的字符串格式
+        String pythonTupleStr = String.join(", ", labelList);
+
+        String os = System.getProperty("os.name").toLowerCase();
+        List<String> cmdList = new ArrayList<>();
+        if (os.contains("windows")) {
+            cmdList.add("cmd");
+            cmdList.add("/c");
+            cmdList.add("conda");
+            cmdList.add("run");
+            cmdList.add("-n");
+            cmdList.add("yolo_env");
+            cmdList.add("python");
+            cmdList.add(shelKey);
+            cmdList.add("--class_names");
+            cmdList.add(pythonTupleStr);
+        }else {
+            cmdList.add("python");
+            cmdList.add(shelKey);
+            cmdList.add("--class_names");
+            cmdList.add(pythonTupleStr);
+        }
+
+        Map<String, Object> stringObjectMap = ShellCommandExecutorUtil.callProcess(workDir, cmdList);
+        return ResultVo.ok(stringObjectMap);
+    }
+
+
+
+    /**
+     * @Author zhangyong
+     * @Description //(11) 接收告警信息并发送到rocketmq
+     * @Date 2023/11/20 17:23
+     * @Param
+     * @return
+     */
+    @Log(businessType = BusinessType.INSERT)
+    @ApiOperation("接收推理结果并发送到rocketmq")
+    @PostMapping(value = "receiveInferResult", produces = {"application/json"})
+    public ResultVo<Map<String, Object>> receiveInferResult(
+            @Validated @RequestBody AlgorithmInferResultReqDto algorithmInferResultReqDto
+    ){
+        return ResultVo.ok(algorithmTaskService.receiveInferResultAndPushMq(algorithmInferResultReqDto));
     }
 
 }
