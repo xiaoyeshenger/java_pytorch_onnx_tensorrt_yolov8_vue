@@ -9,7 +9,9 @@ import uuid
 import schedule
 from .rocketmq_util import send_msg
 from .minio_util import Bucket
-
+import http.client
+import json
+import sys
 
 pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
 
@@ -39,14 +41,34 @@ def generate_short_uuid():
     # 返回UUID的前四个字符
     return long_uuid[:4]
 
+def post_body(server_url,api_url,body_json):
+    #conn = http.client.HTTPSConnection(server_url)
+    conn = http.client.HTTPConnection(server_url)
+    conn.request('POST', api_url, body=json.dumps(body_json), headers={'Content-Type': 'application/json'})
+    response = conn.getresponse()
+    response_data = response.read()
+    if response.status == 200:
+        response_data = json.loads(response_data.decode('utf-8'))
+        print(f"response_data: {response_data}")
+    else:
+        # 在这里处理请求失败的情况
+        print(f"Request failed with status code: {response.status}")
+        conn.close()
+    conn.close()
+
 def push_minio_rocketmq(frame, file_name, bucket_name, group_name, topic, msg_body):
     # 1.保存到minio
     image_bytes = cv2.imencode('.jpg', frame)[1].tobytes()
     binary_io = BytesIO(image_bytes)
     Bucket(binary_io, file_name, bucket_name).createBucketAndUploadFlieStreamAnd()
 
-    # 2.发送消息到rocketmq
-    send_msg('192.168.2.6:9876', group_name, topic, msg_body)
+    # 2.发送消息到rocketmq,如果是window，通过http发送推理结果，linux则通过rocket client 直接发送到队列
+    if sys.platform.startswith('win'):
+        server_url = "192.168.20.137:8088"
+        api_url = "/api/algorithmTask/receiveInferResult"
+        post_body(server_url, api_url, msg_body)
+    else:
+        send_msg('192.168.20.206:9876', group_name, topic, msg_body)
 
 
 

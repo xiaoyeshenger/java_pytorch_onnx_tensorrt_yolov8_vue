@@ -9,7 +9,9 @@ import uuid
 import schedule
 from .rocketmq_util import send_msg
 from .minio_util import Bucket
-
+import http.client
+import json
+import sys
 
 pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
 

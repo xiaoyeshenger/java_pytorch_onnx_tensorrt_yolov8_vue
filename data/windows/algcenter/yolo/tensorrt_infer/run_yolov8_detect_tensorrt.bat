@@ -27,4 +27,4 @@ set streamServerUrl=%3=%4
 :: start /b conda run -n yolo_env cmd /c run_yolov8_tensorrt_detect.bat yolov8n.engine car3.mp4 rtmp://192.168.2.241:11935/stream/live/999?sign=41db35390ddad33f83944f44b8b75ded 1 60
 :: python yolov8_tensorrt_detect.py %1 %2 %streamServerUrl% > run_yolo_log.txt 2>&1
 :: start /b 即开启新线程执行命令(b=background)
-start /b python yolov8_tensorrt_detect.py %1 %2 %streamServerUrl% %5 %6 > run_yolo_log.txt 2>&1
+start /b python yolov8_detect_tensorrt.py %1 %2 %streamServerUrl% %5 %6 > run_yolo_log.txt 2>&1

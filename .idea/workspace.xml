@@ -4,29 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化Readme">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmInferResultReqDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/EmailSendUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/cn/kafuka/rocketMq/InferenceExceptionConsumerTest.java" afterDir="false" />
+    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化windows下面接收推理结果的代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/windows/algcenter/yolo/tensorrt_infer/gsis_util/push_minio_rocketmq_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/windows/algcenter/yolo/tensorrt_infer/gsis_util/push_minio_rocketmq_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlarmDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlarmDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskDynamicSqlSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskDynamicSqlSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceResultConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmModelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/ShellCommandExecutorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/ShellCommandExecutorUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/VideoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/VideoUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/windows/algcenter/yolo/tensorrt_infer/run_yolov8_detect_tensorrt.bat" beforeDir="false" afterPath="$PROJECT_DIR$/data/windows/algcenter/yolo/tensorrt_infer/run_yolov8_detect_tensorrt.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,14 +310,9 @@
       <workItem from="1727579723987" duration="5230000" />
       <workItem from="1728696932917" duration="339000" />
       <workItem from="1728865566147" duration="1318000" />
-      <workItem from="1729479220910" duration="3479000" />
-    </task>
-    <task id="LOCAL-00036" summary="优化shell 调用">
-      <created>1720173614016</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1720173614016</updated>
+      <workItem from="1729479220910" duration="4287000" />
+      <workItem from="1729489310464" duration="686000" />
+      <workItem from="1729502583755" duration="1710000" />
     </task>
     <task id="LOCAL-00037" summary="优化shell 调用">
       <created>1720603692853</created>
@@ -674,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1724659058608</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="优化windows下面接收推理结果的代码">
+      <created>1729482837154</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1729482837154</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -702,6 +685,7 @@
     <MESSAGE value="优化推理代码" />
     <MESSAGE value="优化模型库" />
     <MESSAGE value="优化Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化Readme" />
+    <MESSAGE value="优化windows下面接收推理结果的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化windows下面接收推理结果的代码" />
   </component>
 </project>
