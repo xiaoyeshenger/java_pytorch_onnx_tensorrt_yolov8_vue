@@ -109,55 +109,54 @@ public class InferenceStartupConsumer implements RocketMQListener<MessageExt> {
                 .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(taskNo))
                 .build()
                 .execute();
-        if(ObjUtil.isEmpty(algorithmTask)){
-            throw new IllegalArgumentException("taskNo为: "+taskNo+ " 的任务不存在");
-        }
-
-        //5.根据启动类型状态将启动消息更新到数据库
-        UpdateDSL<UpdateModel> update = update(AlgorithmTaskDynamicSqlSupport.algorithmTask);
-        if(type == 0){
-            update.set(AlgorithmTaskDynamicSqlSupport.pidStopTime).equalToWhenPresent(pushTimeStamp);
-        }
-        if(type == 1){
-            update.set(AlgorithmTaskDynamicSqlSupport.pidStartTime).equalToWhenPresent(pushTimeStamp);
-        }
-        algorithmTaskMapper.update(update
-                .set(AlgorithmTaskDynamicSqlSupport.pid).equalToWhenPresent(pid)
-                .set(AlgorithmTaskDynamicSqlSupport.restartMsg).equalToWhenPresent(inferMsg)
-                .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(taskNo))
-                .build()
-                .render(RenderingStrategies.MYBATIS3));
-
-        //6.如果任务状态为1，代表页面上手动开启了任务,管理者想要执行任务，此时再自动重启任务
-        //  如果任务状态为0,代表页面上手动关闭了任务,管理者不想执行任务，此时不用自动重启任务
-        //如果为启动失败，执行重启
-        if(type ==0){
-            //(1).获取到重启次数
-            Integer restartCount = algorithmTask.getRestartCount();
-            log.info("step00001---> infer_startup 接收到任务进程启动失败消息,开始重启任务进程,taskNo:{},pid:{},type:{},inferMsg:{},restartCount:{},restartCountThreshold:{}",taskNo,pid,type,inferMsg,restartCount,restartCountThreshold);
-
-            //(2).如果自动重启超过设定的阈值次数(比如5次)，则不需要再执行重启，而是发送邮件到运维人员邮箱以便提醒运维人员查看相关日志
-            if(restartCount > restartCountThreshold){
-                //发送告警信息到运维人员邮箱
-                EmailSendUtil.sendEamil("算法中台自动启动任务失败", "630315438@qq.com", adminEmailAddress,"算法中台自动启动任务失败,请查看日志"+DateUtil.getCurrentTimeStr() ,JSONObject.toJSONString(algorithmTask));
-                return;
+        if(!ObjUtil.isEmpty(algorithmTask)){
+            log.info("taskNo为: "+taskNo+ " 的任务不存在");
+            //5.根据启动类型状态将启动消息更新到数据库
+            UpdateDSL<UpdateModel> update = update(AlgorithmTaskDynamicSqlSupport.algorithmTask);
+            if(type == 0){
+                update.set(AlgorithmTaskDynamicSqlSupport.pidStopTime).equalToWhenPresent(pushTimeStamp);
             }
+            if(type == 1){
+                update.set(AlgorithmTaskDynamicSqlSupport.pidStartTime).equalToWhenPresent(pushTimeStamp);
+            }
+            algorithmTaskMapper.update(update
+                    .set(AlgorithmTaskDynamicSqlSupport.pid).equalToWhenPresent(pid)
+                    .set(AlgorithmTaskDynamicSqlSupport.restartMsg).equalToWhenPresent(inferMsg)
+                    .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(taskNo))
+                    .build()
+                    .render(RenderingStrategies.MYBATIS3));
 
-            //(2).根据重启过的次数计算延迟重启时间
-            //--1.构建重启参数
-            JSONObject jo = new JSONObject();
-            jo.put("taskNo",taskNo);
-            jo.put("pid",pid);
-            jo.put("pushTimeStamp",pushTimeStamp);
-            jo.put("inferMsg",inferMsg);
-            jo.put("restartCount",restartCount);
+            //6.如果任务状态为1，代表页面上手动开启了任务,管理者想要执行任务，此时再自动重启任务
+            //  如果任务状态为0,代表页面上手动关闭了任务,管理者不想执行任务，此时不用自动重启任务
+            //如果为启动失败，执行重启
+            if(type ==0){
+                //(1).获取到重启次数
+                Integer restartCount = algorithmTask.getRestartCount();
+                log.info("step00001---> infer_startup 接收到任务进程启动失败消息,开始重启任务进程,taskNo:{},pid:{},type:{},inferMsg:{},restartCount:{},restartCountThreshold:{}",taskNo,pid,type,inferMsg,restartCount,restartCountThreshold);
 
-            //--2.发生延迟队列消息
-            //rocketmq的start版本中 延时消息一共分为18个等级分别为：1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h
-            //将 重启次数+1 作为rocketmq延迟队列的level，实现重启次数越多,重启延迟就越长的重试机制
-            SendResult sendResult = rocketMQTemplate.syncSend(restartTaskTopic, MessageBuilder.withPayload(jo).build(),2000,restartCount+1);
-            if(!sendResult.getSendStatus().equals(SendStatus.SEND_OK)){
-                throw new IllegalArgumentException("Rocketmq InferenceException 服务异常，请稍后再试!!");
+                //(2).如果自动重启超过设定的阈值次数(比如5次)，则不需要再执行重启，而是发送邮件到运维人员邮箱以便提醒运维人员查看相关日志
+                if(restartCount > restartCountThreshold){
+                    //发送告警信息到运维人员邮箱
+                    EmailSendUtil.sendEamil("算法中台自动启动任务失败", "630315438@qq.com", adminEmailAddress,"算法中台自动启动任务失败,请查看日志"+DateUtil.getCurrentTimeStr() ,JSONObject.toJSONString(algorithmTask));
+                    return;
+                }
+
+                //(2).根据重启过的次数计算延迟重启时间
+                //--1.构建重启参数
+                JSONObject jo = new JSONObject();
+                jo.put("taskNo",taskNo);
+                jo.put("pid",pid);
+                jo.put("pushTimeStamp",pushTimeStamp);
+                jo.put("inferMsg",inferMsg);
+                jo.put("restartCount",restartCount);
+
+                //--2.发生延迟队列消息
+                //rocketmq的start版本中 延时消息一共分为18个等级分别为：1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h
+                //将 重启次数+1 作为rocketmq延迟队列的level，实现重启次数越多,重启延迟就越长的重试机制
+                SendResult sendResult = rocketMQTemplate.syncSend(restartTaskTopic, MessageBuilder.withPayload(jo).build(),2000,restartCount+1);
+                if(!sendResult.getSendStatus().equals(SendStatus.SEND_OK)){
+                    throw new IllegalArgumentException("Rocketmq InferenceException 服务异常，请稍后再试!!");
+                }
             }
         }
     }
