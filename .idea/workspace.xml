@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,21 +314,7 @@
       <workItem from="1730086761005" duration="1351000" />
       <workItem from="1730170396595" duration="88000" />
       <workItem from="1730337716295" duration="5516000" />
-      <workItem from="1730427045884" duration="3683000" />
-    </task>
-    <task id="LOCAL-00042" summary="优化shell 调用">
-      <created>1720605225197</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1720605225197</updated>
-    </task>
-    <task id="LOCAL-00043" summary="优化shell 调用">
-      <created>1720605295074</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1720605295074</updated>
+      <workItem from="1730427045884" duration="4629000" />
     </task>
     <task id="LOCAL-00044" summary="优化shell 调用">
       <created>1720606993047</created>
@@ -660,7 +645,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730449635661</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="优化推理代码">
+      <created>1730450617364</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1730450617364</updated>
+    </task>
+    <task id="LOCAL-00092" summary="优化推理代码">
+      <created>1730450827045</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1730450827045</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
