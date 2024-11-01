@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化windows下面接收推理结果的代码">
+    <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化前端代码">
+      <change afterPath="$PROJECT_DIR$/data/front_code/alg_vue.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/front_code/alg_vue.rar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +60,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/iotper/pom.xml&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/algorithmCenter/data/front_code&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -80,11 +79,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
       <recent name="E:\ideaGitPro\algorithmCenter\src\main\resources" />
       <recent name="E:\ideaGitPro\algorithmCenter\img" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\windows\algcenter\yolo" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\linux\algcenter\yolo" />
-      <recent name="E:\ideaGitPro\algorithmCenter\data\algorithm_model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ideaGitPro\algorithmCenter\data\doc" />
@@ -316,14 +315,8 @@
       <workItem from="1729502583755" duration="7537000" />
       <workItem from="1730086761005" duration="1351000" />
       <workItem from="1730170396595" duration="88000" />
-      <workItem from="1730337716295" duration="1396000" />
-    </task>
-    <task id="LOCAL-00039" summary="优化shell 调用">
-      <created>1720604386462</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1720604386462</updated>
+      <workItem from="1730337716295" duration="5516000" />
+      <workItem from="1730427045884" duration="635000" />
     </task>
     <task id="LOCAL-00040" summary="优化shell 调用">
       <created>1720604555198</created>
@@ -661,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1729573325277</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="优化前端代码">
+      <created>1730339179521</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1730339179521</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,6 +690,7 @@
     <MESSAGE value="优化模型库" />
     <MESSAGE value="优化Readme" />
     <MESSAGE value="优化windows下面接收推理结果的代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化windows下面接收推理结果的代码" />
+    <MESSAGE value="优化前端代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化前端代码" />
   </component>
 </project>
