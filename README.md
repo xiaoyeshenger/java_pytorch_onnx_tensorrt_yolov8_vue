@@ -320,6 +320,12 @@ src : 项目后端springboot代码
 ![输入图片说明](img/login.png)
 
 
+![输入图片说明](img/first.png)
+
+
+![输入图片说明](img/alarm_data.png)
+
+
 ![输入图片说明](img/exp1.mp4)
 
 
