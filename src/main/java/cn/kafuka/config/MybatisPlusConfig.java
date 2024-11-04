@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author 三分恶
+ * @Author zy
  * @Date 2021/1/23
  * @Description MP分页设置
  */

@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/init/SysInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/MybatisPlusConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +61,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "E:/ideaGitPro/algorithmCenter/data/sql",
+    "last_opened_file_path": "E:/ideaGitPro/algorithmCenter/src/main/java/cn/kafuka",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,11 +80,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\ideaGitPro\algorithmCenter\data\sql" />
+      <recent name="E:\ideaGitPro\algorithmCenter\src\main\java\cn\kafuka" />
       <recent name="E:\ideaGitPro\algorithmCenter\img" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\sql" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
       <recent name="E:\ideaGitPro\algorithmCenter\src\main\resources" />
-      <recent name="E:\ideaGitPro\algorithmCenter\data\windows\algcenter\yolo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ideaGitPro\algorithmCenter\data\doc" />
@@ -316,21 +318,7 @@
       <workItem from="1730170396595" duration="88000" />
       <workItem from="1730337716295" duration="5516000" />
       <workItem from="1730427045884" duration="4629000" />
-      <workItem from="1730452024577" duration="2030000" />
-    </task>
-    <task id="LOCAL-00045" summary="优化shell 调用">
-      <created>1720660566360</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1720660566360</updated>
-    </task>
-    <task id="LOCAL-00046" summary="优化shell 调用">
-      <created>1720661259189</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1720661259189</updated>
+      <workItem from="1730452024577" duration="5282000" />
     </task>
     <task id="LOCAL-00047" summary="优化shell 调用">
       <created>1720670114603</created>
@@ -661,7 +649,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730452122404</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="优化推理代码">
+      <created>1730681706718</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1730681706718</updated>
+    </task>
+    <task id="LOCAL-00095" summary="优化推理代码">
+      <created>1730682517697</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1730682517697</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
