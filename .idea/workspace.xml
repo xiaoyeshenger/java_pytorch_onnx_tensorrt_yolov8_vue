@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +59,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "E:/ideaGitPro/algorithmCenter/img",
+    "last_opened_file_path": "E:/ideaGitPro/algorithmCenter/data/sql",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,11 +78,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaGitPro\algorithmCenter\data\sql" />
       <recent name="E:\ideaGitPro\algorithmCenter\img" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
       <recent name="E:\ideaGitPro\algorithmCenter\src\main\resources" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\windows\algcenter\yolo" />
-      <recent name="E:\ideaGitPro\algorithmCenter\data\linux\algcenter\yolo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ideaGitPro\algorithmCenter\data\doc" />
@@ -315,13 +316,7 @@
       <workItem from="1730170396595" duration="88000" />
       <workItem from="1730337716295" duration="5516000" />
       <workItem from="1730427045884" duration="4629000" />
-    </task>
-    <task id="LOCAL-00044" summary="优化shell 调用">
-      <created>1720606993047</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1720606993047</updated>
+      <workItem from="1730452024577" duration="2030000" />
     </task>
     <task id="LOCAL-00045" summary="优化shell 调用">
       <created>1720660566360</created>
@@ -659,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730450827045</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="优化推理代码">
+      <created>1730452122404</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1730452122404</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
