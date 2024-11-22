@@ -105,7 +105,6 @@ public class InferenceExceptionConsumer implements RocketMQListener<MessageExt> 
                 .build()
                 .execute();
         if(!ObjUtil.isEmpty(algorithmTask)){
-            log.info("taskNo为: "+taskNo+ ", pid为: "+pid+" 的任务不存在");
             //6.如果任务状态为1，代表页面上手动开启了任务,管理者想要执行任务，此时再自动重启任务
             //  如果任务状态为0,代表页面上手动关闭了任务,管理者不想执行任务，此时不用自动重启任务
             //(1).获取到重启次数

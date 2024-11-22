@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/init/SysInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/MybatisPlusConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,42 +50,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelOrder2": "2",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RequestMappingsPanelWidth2": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "E:/ideaGitPro/algorithmCenter/src/main/java/cn/kafuka",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "e07a0e604e6298258d0e0c4761c98091",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/dj-dock2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;e07a0e604e6298258d0e0c4761c98091&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
       <recent name="E:\ideaGitPro\algorithmCenter\src\main\java\cn\kafuka" />
       <recent name="E:\ideaGitPro\algorithmCenter\img" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\sql" />
-      <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
       <recent name="E:\ideaGitPro\algorithmCenter\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -235,6 +237,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="" />
@@ -318,21 +323,13 @@
       <workItem from="1730170396595" duration="88000" />
       <workItem from="1730337716295" duration="5516000" />
       <workItem from="1730427045884" duration="4629000" />
-      <workItem from="1730452024577" duration="5282000" />
-    </task>
-    <task id="LOCAL-00047" summary="优化shell 调用">
-      <created>1720670114603</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1720670114603</updated>
-    </task>
-    <task id="LOCAL-00048" summary="优化shell 调用">
-      <created>1720677100961</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1720677100961</updated>
+      <workItem from="1730452024577" duration="20864000" />
+      <workItem from="1731458071708" duration="5218000" />
+      <workItem from="1731546352526" duration="8916000" />
+      <workItem from="1731654801647" duration="2334000" />
+      <workItem from="1732095610911" duration="980000" />
+      <workItem from="1732169168542" duration="8617000" />
+      <workItem from="1732258874489" duration="8082000" />
     </task>
     <task id="LOCAL-00049" summary="优化shell 调用">
       <created>1720677467892</created>
@@ -663,7 +660,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730682517697</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="优化推理代码">
+      <created>1730685831690</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1730685831690</updated>
+    </task>
+    <task id="LOCAL-00097" summary="优化推理代码">
+      <created>1730686062517</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1730686062517</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

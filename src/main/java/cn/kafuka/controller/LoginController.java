@@ -27,13 +27,13 @@ import java.util.List;
 import java.util.Map;
 
 
-/*
+/**
  * @Author 张勇
  * @Description LoginController类
  * @Date 2021/05/21 18:43
  * @Param
  * @return
- **/
+ */
 @RestController
 @RequestMapping("/sys/auth")
 @Api(tags = "用户登陆相关接口")
@@ -47,7 +47,7 @@ public class LoginController {
     private final LoginService loginService;
 
 
-    /*
+    /**
      * @Author zhangyong
      * @Description //(1) 获取短信验证码
      * @Date 下午 4:45 2019/9/5 0005
@@ -74,7 +74,7 @@ public class LoginController {
     }
 
 
-    /*
+    /**
      * @Author: zhangyong
      * description: (2) 用户登陆
      * @Date: 2021-05-19 9:39

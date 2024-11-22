@@ -96,19 +96,17 @@ public class RestartTaskConsumer implements RocketMQListener<MessageExt> {
                 .and(AlgorithmTaskDynamicSqlSupport.pid, isEqualTo(pid))
                 .build()
                 .execute();
-        if(ObjUtil.isEmpty(algorithmTask)){
-            log.info("taskNo为: "+taskNo+ ", pid为: "+pid+" 的任务不存在");
-            //5.重启任务之前判断当前任务的状态
+        if(!ObjUtil.isEmpty(algorithmTask)){
+            //重启任务之前判断当前任务的状态
             // 如果任务状态为1，代表页面上手动开启了任务,管理者想要执行任务，此时再自动重启任务
             // 如果任务状态为0,代表页面上手动关闭了任务,管理者不想执行任务，此时不用自动重启任务
             Byte taskStatus = algorithmTask.getTaskStatus();
             if(taskStatus == 1){
-                //5.关闭推理脚本
+                //(1).关闭推理脚本
                 algorithmTaskService.setAlgorithmTaskStatus(AlgorithmTaskStatusReqDto.builder().taskNo(taskNo).taskStatus((byte)0).build());
-                //6.再次启动推理脚本
+                //(2).再次启动推理脚本
                 algorithmTaskService.setAlgorithmTaskStatus(AlgorithmTaskStatusReqDto.builder().taskNo(taskNo).taskStatus((byte)1).build());
-
-                //7.更新任务的重启次数
+                //(3).更新任务的重启次数
                 algorithmTaskMapper.update(update(AlgorithmTaskDynamicSqlSupport.algorithmTask)
                         .set(AlgorithmTaskDynamicSqlSupport.pidStartTime).equalToWhenPresent(System.currentTimeMillis())
                         .set(AlgorithmTaskDynamicSqlSupport.pidStopTime).equalToWhenPresent(pushTimeStamp)

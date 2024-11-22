@@ -22,13 +22,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/*
+/**
  * @Author 张勇
  * @Description UserController类
  * @Date 2021/05/21 18:43
  * @Param
  * @return
- **/
+ */
 @RestController
 @RequestMapping("/sys/user")
 @Api(tags = "用户相关接口")
@@ -129,7 +129,7 @@ public class UserController {
 
     /**
      * @Author: zhangyong
-     * description: (6) 新增用户注册信息
+     * description: (6) 用户注册
      * @Date: 2021-05-19 9:39
      * @Param:
      * @Return:
@@ -183,9 +183,9 @@ public class UserController {
         return ResultVo.ok(data);
     }
 
-    /*
+    /**
      * @Author: zhangyong
-     * description: (9) 查询用户名是否存在
+     * description: (8) 查询用户名是否存在
      * @Date: 2021-05-19 9:39
      * @Param:
      * @Return:
@@ -198,13 +198,13 @@ public class UserController {
         return ResultVo.ok(loginService.queryUsernameExist(usernameReqDto.getUsername()));
     }
 
-    /*
+    /**
      * @Author 张勇
-     * @Description //(10) 更新用户注册状态(暂时不用，因为目前注册后成功后直接成为正式用户,不需要审核)
+     * @Description //(9) 更新用户注册状态(暂时不用，因为目前注册后成功后直接成为正式用户,不需要审核)
      * @Date 2021/05/21 18:43
      * @Param
      * @return
-     **/
+     */
     @Log(businessType = BusinessType.UPDATE)
     @ApiOperation("更新用户状态(正式/申请中/未通过审核)")
     @PostMapping(value = "updateUserRegType", produces = {"application/json"})
@@ -215,9 +215,9 @@ public class UserController {
         return ResultVo.ok(userService.updateUserRegType(userRegTypeReqDto));
     }
 
-    /*
+    /**
      * @Author: zhangyong
-     * description: (11) 修改密码(重置密码)
+     * description: (10) 修改密码(重置密码)
      * @Date: 2021-06-03 20:15
      * @Param:
      * @Return:

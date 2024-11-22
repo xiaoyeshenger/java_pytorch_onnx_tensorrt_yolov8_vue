@@ -110,8 +110,7 @@ public class InferenceStartupConsumer implements RocketMQListener<MessageExt> {
                 .build()
                 .execute();
         if(!ObjUtil.isEmpty(algorithmTask)){
-            log.info("taskNo为: "+taskNo+ " 的任务不存在");
-            //5.根据启动类型状态将启动消息更新到数据库
+            //(1).根据启动类型状态将启动消息更新到数据库(0:不成功，1:成功, 2:正在启动)
             UpdateDSL<UpdateModel> update = update(AlgorithmTaskDynamicSqlSupport.algorithmTask);
             if(type == 0){
                 update.set(AlgorithmTaskDynamicSqlSupport.pidStopTime).equalToWhenPresent(pushTimeStamp);
@@ -126,12 +125,13 @@ public class InferenceStartupConsumer implements RocketMQListener<MessageExt> {
                     .build()
                     .render(RenderingStrategies.MYBATIS3));
 
-            //6.如果任务状态为1，代表页面上手动开启了任务,管理者想要执行任务，此时再自动重启任务
-            //  如果任务状态为0,代表页面上手动关闭了任务,管理者不想执行任务，此时不用自动重启任务
-            //如果为启动失败，执行重启
-            if(type ==0){
+            //6.如果为启动失败即启动状态type=0，执行重启
+            if(type == 0){
                 //(1).获取到重启次数
                 Integer restartCount = algorithmTask.getRestartCount();
+                if(ObjUtil.isEmpty(restartCount)){
+                    restartCount = 0;
+                }
                 log.info("step00001---> infer_startup 接收到任务进程启动失败消息,开始重启任务进程,taskNo:{},pid:{},type:{},inferMsg:{},restartCount:{},restartCountThreshold:{}",taskNo,pid,type,inferMsg,restartCount,restartCountThreshold);
 
                 //(2).如果自动重启超过设定的阈值次数(比如5次)，则不需要再执行重启，而是发送邮件到运维人员邮箱以便提醒运维人员查看相关日志
