@@ -1,10 +1,8 @@
 package cn.kafuka.service;
 
-import cn.kafuka.bo.dto.AlgorithmInferResultReqDto;
-import cn.kafuka.bo.dto.AlgorithmTaskStatusReqDto;
+import cn.kafuka.bo.dto.*;
 import cn.kafuka.bo.vo.PageVo;
-import cn.kafuka.bo.dto.AlgorithmTaskReqDto;
-import cn.kafuka.bo.dto.AlgorithmTaskPageReqDto;
+
 import java.util.Map;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +29,13 @@ public interface AlgorithmTaskService {
      * @Date 2023/11/23 14:06
      */
     Map<String, Object> deleteAlgorithmTaskById(Long id);
+
+
+    /**
+     * @Description 通过任务号删除计算任务
+     * @Date 2023/11/23 14:06
+     */
+    Map<String, Object> deleteAlgorithmTaskByTaskNo(AlgorithmTaskDeleteReqDto algorithmTaskDeleteReqDto);
 
     /**
      * @Description 更新计算任务

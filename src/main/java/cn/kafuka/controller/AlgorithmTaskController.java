@@ -88,6 +88,23 @@ public class AlgorithmTaskController {
 
     /**
      * @Author zhangyong
+     * @Description //(2) 通过id删除计算任务信息
+     * @Date 2023/11/23 14:06
+     * @Param
+     * @return
+     */
+    @Log(businessType = BusinessType.DELETE)
+    @ApiOperation("通过id删除计算任务信息")
+    @ApiImplicitParam(name = "id", value = "计算任务id", example = "1386532156978321", dataType = "Long", paramType = "form")
+    @PostMapping("/deleteAlgorithmTaskByTaskNo")
+    public ResultVo<Map<String, Object>> deleteAlgorithmTaskByTaskNo(
+            @Validated @RequestBody AlgorithmTaskDeleteReqDto algorithmTaskDeleteReqDto
+    ){
+        return ResultVo.ok(algorithmTaskService.deleteAlgorithmTaskByTaskNo(algorithmTaskDeleteReqDto));
+    }
+
+    /**
+     * @Author zhangyong
      * @Description //(3) 更新计算任务信息
      * @Date 2023/11/23 14:06
      * @Param

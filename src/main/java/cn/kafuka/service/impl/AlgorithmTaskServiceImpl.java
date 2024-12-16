@@ -1,7 +1,6 @@
 package cn.kafuka.service.impl;
 
-import cn.kafuka.bo.dto.AlgorithmInferResultReqDto;
-import cn.kafuka.bo.dto.AlgorithmTaskStatusReqDto;
+import cn.kafuka.bo.dto.*;
 import cn.kafuka.bo.po.AlgorithmModel;
 import cn.kafuka.bo.po.Customer;
 import cn.kafuka.mapper.*;
@@ -14,8 +13,6 @@ import com.github.pagehelper.PageHelper;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import cn.kafuka.bo.vo.PageVo;
-import cn.kafuka.bo.dto.AlgorithmTaskReqDto;
-import cn.kafuka.bo.dto.AlgorithmTaskPageReqDto;
 import cn.kafuka.bo.po.AlgorithmTask;
 import cn.kafuka.excel.AlgorithmTaskExcelListener;
 import cn.kafuka.excel.AlgorithmTaskExcelVo;
@@ -113,7 +110,7 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         }
 
         String videoPlayUrl = algorithmTaskReqDto.getVideoPlayUrl();
-        if(!VideoUtil.isVideoCanPlayed(videoPlayUrl)){
+        if(!VideoUtil.isVideoPlayUrlLegitimate(videoPlayUrl)){
             throw new IllegalArgumentException("视频地址不能正常播放");
         }
 
@@ -157,6 +154,8 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         Map<String,Object> resultMap = new HashMap<>();
         resultMap.put("msg","添加计算任务信息成功");
         resultMap.put("taskNo",taskNo);
+        resultMap.put("computingVideoPlayUrl", streamPullServer + algorithmTask.getComputingVideoPlayUrl());
+        resultMap.put("pushVideoPlayUrl", streamPullServer + algorithmTask.getPushVideoPlayUrl());
         return resultMap;
     }
 
@@ -177,6 +176,19 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                     .where(AlgorithmTaskDynamicSqlSupport.id, isEqualTo(id))
                     .build()
                     .execute();
+
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("msg","删除计算任务成功");
+        return resultMap;
+    }
+
+    @Override
+    public Map<String, Object> deleteAlgorithmTaskByTaskNo(AlgorithmTaskDeleteReqDto algorithmTaskDeleteReqDto) {
+        String taskNo = algorithmTaskDeleteReqDto.getTaskNo();
+        algorithmTaskMapper.deleteByExample()
+                .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(taskNo))
+                .build()
+                .execute();
 
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("msg","删除计算任务成功");
@@ -206,7 +218,7 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         }
 
         String videoPlayUrl = algorithmTaskReqDto.getVideoPlayUrl();
-        if(!VideoUtil.isVideoCanPlayed(videoPlayUrl)){
+        if(!VideoUtil.isVideoPlayUrlLegitimate(videoPlayUrl)){
             throw new IllegalArgumentException("视频地址不能正常播放");
         }
 
@@ -253,6 +265,9 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         //5.返回结果
         Map<String,Object> resultMap = new HashMap<>();
         resultMap.put("msg","更新计算任务信息成功");
+        resultMap.put("taskNo",taskNo);
+        resultMap.put("computingVideoPlayUrl", streamPullServer + algorithmTask.getComputingVideoPlayUrl());
+        resultMap.put("pushVideoPlayUrl", streamPullServer + algorithmTask.getPushVideoPlayUrl());
         return resultMap;
     }
 

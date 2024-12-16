@@ -42,16 +42,18 @@ public class AlgorithmTaskReqDto extends BaseDto {
     @NotNull(message = "客户号不能为空")
     private String customerNo;
 
-
     @ApiModelProperty(name = "videoPlayUrl", value = "原始视频流播放地址", example = "xxx",dataType="String")
     @NotNull(message = "原始视频流播放地址不能为空")
     private String videoPlayUrl;
 
+
     @ApiModelProperty(name = "taskName", value = "任务名称", example = "监测路口1",dataType="String")
     private String taskName;
 
+
     @ApiModelProperty(name = "skipFrame", value = "跳帧数量(每隔多少帧检测一次,默认为1 即不跳帧)", example = "3",dataType="Integer")
     private Integer skipFrame;
+
 
     @ApiModelProperty(name = "pushFrequency", value = "推送频率(每隔多少秒推送推理结果一次，默认为60s)", example = "120",dataType="Integer")
     private Integer pushFrequency;

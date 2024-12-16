@@ -44,10 +44,10 @@ public class AlgorithmTask implements Serializable {
     @ApiModelProperty(value = "流媒体服务器地址")
     private String streamServerUrl;
 
-    @ApiModelProperty(value = "实时计算的视频流播放地址")
+    @ApiModelProperty(value = "实时推送的检测视频流播放地址")
     private String computingVideoPlayUrl;
 
-    @ApiModelProperty(value = "实时推送的视频流播放地址")
+    @ApiModelProperty(value = "实时推送的原始视频流播放地址")
     private String pushVideoPlayUrl;
 
     @ApiModelProperty(value = "跳帧数量(每隔多少帧检测一次)")

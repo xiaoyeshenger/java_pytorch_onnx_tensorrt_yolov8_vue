@@ -1,25 +1,21 @@
 package cn.kafuka.bo.dto;
 
 
-import cn.kafuka.bo.dto.PageReqDto;
-import cn.kafuka.valid.ValidationGroup;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
-import lombok.experimental.Tolerate;
 
 import javax.validation.constraints.*;
 
-import java.util.List;
 
 
-/*
+/**
  * @Author zhangyong
  * @Description //AlarmDataPageReqDto
  * @Date 2023/11/25 12:42
  * @Param
  * @return
- **/
+ */
 @Getter
 @Setter
 @Accessors(chain=true)

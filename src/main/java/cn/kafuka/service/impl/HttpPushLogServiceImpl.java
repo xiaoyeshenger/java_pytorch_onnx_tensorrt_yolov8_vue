@@ -2,19 +2,15 @@ package cn.kafuka.service.impl;
 
 import cn.hutool.cache.CacheUtil;
 import cn.kafuka.annotation.HttpPushServiceLog;
-import cn.kafuka.bo.po.AlgorithmTask;
-import cn.kafuka.bo.po.Customer;
-import cn.kafuka.mapper.AlgorithmTaskDynamicSqlSupport;
-import cn.kafuka.mapper.AlgorithmTaskMapper;
-import cn.kafuka.mapper.CustomerDynamicSqlSupport;
-import cn.kafuka.mapper.CustomerMapper;
+import cn.kafuka.bo.po.*;
+import cn.kafuka.bo.vo.DataDictVo;
+import cn.kafuka.cache.DictCache;
+import cn.kafuka.mapper.*;
 import cn.kafuka.service.AlgorithmTaskService;
 import cn.kafuka.util.MinioUtil;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSONObject;
 import cn.kafuka.bo.dto.HttpPushLogPageReqDto;
-import cn.kafuka.bo.po.HttpPushLog;
-import cn.kafuka.bo.po.SysFile;
 import cn.kafuka.bo.vo.PageVo;
 import cn.kafuka.dao.HttpPushLogDao;
 import cn.kafuka.redis.RedisService;
@@ -58,9 +54,13 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
     private String streamPullServer;
 
 
+    private final DictCache dictCache;
+
     private final MinioUtil minioUtil;
 
     private final AlgorithmTaskMapper algorithmTaskMapper;
+
+    private final AlgorithmModelMapper algorithmModelMapper;
 
     private final CustomerMapper customerMapper;
 
@@ -211,6 +211,19 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
         String modelNo = algorithmTask.getModelNo();
         String modelName = algorithmTask.getAlgorithmModelName();
 
+        AlgorithmModel algorithmModel = algorithmModelMapper.selectByExampleOne()
+                .where(AlgorithmTaskDynamicSqlSupport.modelNo, isEqualTo(modelNo))
+                .build()
+                .execute();
+        if(ObjUtil.isEmpty(algorithmModel)){
+            throw new IllegalArgumentException("modelNo为: "+taskNo+" 的模型不存在");
+        }
+
+        Long algorithmTypeId = algorithmModel.getAlgorithmType();
+        DataDictVo dataDictVoById = dictCache.getDataDictVoById(algorithmTypeId);
+        String algorithmTypeValue = dataDictVoById.getValue();
+
+
         String customerNo = algorithmTask.getCustomerNo();
         Customer customer = customerMapper.selectByExampleOne()
                 .where(CustomerDynamicSqlSupport.customerNo, isEqualTo(customerNo))
@@ -254,6 +267,8 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
         reqParam.put("modelName",modelName);
         reqParam.put("customerNo",customerNo);
         reqParam.put("customerName",customerName);
+        reqParam.put("algorithmTypeId",algorithmTypeId);
+        reqParam.put("algorithmTypeValue",algorithmTypeValue);
         reqParam.put("clsScore",clsScore);
         reqParam.put("imgUrl",imgUrl);
         reqParam.put("alarmTime",alarmTime);

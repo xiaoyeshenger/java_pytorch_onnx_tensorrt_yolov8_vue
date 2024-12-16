@@ -81,6 +81,36 @@ public class VideoUtil {
     }
 
 
+    /**
+     * 视频流是否可播放
+     */
+    @SneakyThrows
+    public static Boolean isVideoPlayUrlLegitimate(String playUrl){
+
+        boolean isAvailable = false;
+        if(playUrl.endsWith(".mp4")){
+            isAvailable = true;
+        }
+
+        if(playUrl.contains(":")){
+            String[] split = playUrl.split(":");
+            if(split.length < 3){
+                throw new IllegalArgumentException("播放地址格式不对");
+            }
+            //协议(rtmp/rtsp/http/ws)
+            String protocol = split[0];
+
+            //主机地址
+            String hostStr = split[1];
+            if(!hostStr.contains(".")){
+                throw new IllegalArgumentException("播放地址格式不对");
+            }
+            isAvailable = true;
+        }
+
+        return isAvailable;
+    }
+
 
     /**
      * 视频能够正常播放

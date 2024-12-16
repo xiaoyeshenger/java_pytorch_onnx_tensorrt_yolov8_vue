@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmTaskDeleteReqDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceExceptionConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/InferenceStartupConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlarmDataPageReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlarmDataPageReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmTaskReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmTaskReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/HttpPushLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/HttpPushLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/VideoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/VideoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,14 +334,17 @@
       <workItem from="1731654801647" duration="2334000" />
       <workItem from="1732095610911" duration="980000" />
       <workItem from="1732169168542" duration="8617000" />
-      <workItem from="1732258874489" duration="8082000" />
-    </task>
-    <task id="LOCAL-00049" summary="优化shell 调用">
-      <created>1720677467892</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1720677467892</updated>
+      <workItem from="1732258874489" duration="8357000" />
+      <workItem from="1732519435284" duration="616000" />
+      <workItem from="1732599952323" duration="1985000" />
+      <workItem from="1732605095569" duration="9638000" />
+      <workItem from="1732695487580" duration="3076000" />
+      <workItem from="1732851118269" duration="15299000" />
+      <workItem from="1733283463690" duration="2886000" />
+      <workItem from="1733295943068" duration="635000" />
+      <workItem from="1733449309049" duration="148000" />
+      <workItem from="1733452637433" duration="2197000" />
+      <workItem from="1733973438339" duration="758000" />
     </task>
     <task id="LOCAL-00050" summary="优化shell 调用">
       <created>1720678175550</created>
@@ -674,7 +682,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730686062517</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="优化推理代码">
+      <created>1732267577288</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1732267577289</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
