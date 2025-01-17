@@ -52,6 +52,12 @@ public final class AlgorithmTaskDynamicSqlSupport {
     public static final SqlColumn<Integer> pushFrequency = algorithmTask.pushFrequency;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Float> confThreshold = algorithmTask.confThreshold;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Float> nmsThreshold = algorithmTask.nmsThreshold;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final SqlColumn<String> workDir = algorithmTask.workDir;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -124,6 +130,10 @@ public final class AlgorithmTaskDynamicSqlSupport {
         public final SqlColumn<Integer> skipFrame = column("skip_frame", JDBCType.INTEGER);
 
         public final SqlColumn<Integer> pushFrequency = column("push_frequency", JDBCType.INTEGER);
+
+        public final SqlColumn<Float> confThreshold = column("conf_threshold", JDBCType.FLOAT);
+
+        public final SqlColumn<Float> nmsThreshold = column("nms_threshold", JDBCType.FLOAT);
 
         public final SqlColumn<String> workDir = column("work_dir", JDBCType.VARCHAR);
 

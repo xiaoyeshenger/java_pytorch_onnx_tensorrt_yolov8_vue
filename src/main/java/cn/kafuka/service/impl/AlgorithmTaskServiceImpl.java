@@ -147,6 +147,14 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
             algorithmTask.setPushFrequency(60);
         }
 
+        if(ObjUtil.isEmpty(algorithmTask.getNmsThreshold())){
+            algorithmTask.setNmsThreshold(algorithmModel.getNmsThreshold());
+        }
+
+        if(ObjUtil.isEmpty(algorithmTask.getConfThreshold())){
+            algorithmTask.setConfThreshold(algorithmModel.getConfThreshold());
+        }
+
         //3.保存
         algorithmTaskMapper.insert(algorithmTask);
 
@@ -260,6 +268,14 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
             algorithmTask.setPushFrequency(60);
         }
 
+        if(ObjUtil.isEmpty(algorithmTask.getNmsThreshold())){
+            algorithmTask.setNmsThreshold(algorithmModel.getNmsThreshold());
+        }
+
+        if(ObjUtil.isEmpty(algorithmTask.getConfThreshold())){
+            algorithmTask.setConfThreshold(algorithmModel.getConfThreshold());
+        }
+
         algorithmTaskMapper.updateByPrimaryKey(algorithmTask);
 
         //5.返回结果
@@ -317,6 +333,8 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         attr.put("pushVideoPlayUrl", streamPullServer + e.getPushVideoPlayUrl());
         attr.put("skipFrame", e.getSkipFrame());
         attr.put("pushFrequency", e.getPushFrequency());
+        attr.put("confThreshold", e.getConfThreshold());
+        attr.put("nmsThreshold", e.getNmsThreshold());
         attr.put("shellKey", e.getShellKey());
         attr.put("firstExecTime", e.getFirstExecTime());
         attr.put("latestExecTime", e.getLatestExecTime());
@@ -356,6 +374,8 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                     attr.put("pushVideoPlayUrl", streamPullServer + e.getPushVideoPlayUrl());
                     attr.put("skipFrame", e.getSkipFrame());
                     attr.put("pushFrequency", e.getPushFrequency());
+                    attr.put("confThreshold", e.getConfThreshold());
+                    attr.put("nmsThreshold", e.getNmsThreshold());
                     attr.put("shellKey", e.getShellKey());
                     attr.put("firstExecTime", e.getFirstExecTime());
                     attr.put("latestExecTime", e.getLatestExecTime());
@@ -535,10 +555,10 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
 
 
         //(4).置信度阈值
-        float confThreshold = algorithmModel.getConfThreshold();
+        float confThreshold = algorithmTask.getConfThreshold();
 
         //(5).nms阈值
-        float nmsThreshold = algorithmModel.getNmsThreshold();
+        float nmsThreshold = algorithmTask.getNmsThreshold();
 
         //6.操作系统
         String os = System.getProperty("os.name").toLowerCase();

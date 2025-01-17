@@ -59,6 +59,14 @@ public class AlgorithmTaskReqDto extends BaseDto {
     private Integer pushFrequency;
 
 
+    @ApiModelProperty(value = "置信度阈值")
+    private Float confThreshold;
+
+
+    @ApiModelProperty(value = "nms阈值")
+    private Float nmsThreshold;
+
+
     @ApiModelProperty(name = "videoBaseInfo", value = "原始视频基本信息(协议(国标需要提供国标码等信息)，帧率，图像大小)json", example = "xxx",dataType="String")
     private String videoBaseInfo;
 

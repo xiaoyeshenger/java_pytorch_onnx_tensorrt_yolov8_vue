@@ -117,9 +117,9 @@ public class CodeGenerator {
     //mysql
     public static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
     //public static final String MYSQL_URL = "jdbc:mysql://192.168.2.241:3306/algorithm_center?serverTimezone=UTC&characterEncoding=utf-8&nullCatalogMeansCurrent=true&useSSL=false";
-    public static final String MYSQL_URL = "jdbc:mysql://scjskj.tpddns.cn:3306/algorithm_center?serverTimezone=UTC&characterEncoding=utf-8&nullCatalogMeansCurrent=true&useSSL=false";
-    public static final String MYSQL_USERNAME = "kfk";
-    public static final String MYSQL_PASSWORD = "kfk555888";
+    public static final String MYSQL_URL = "jdbc:mysql://192.168.20.206:3306/algorithm_center?serverTimezone=UTC&characterEncoding=utf-8&nullCatalogMeansCurrent=true&useSSL=false";
+    public static final String MYSQL_USERNAME = "root";
+    public static final String MYSQL_PASSWORD = "jskjmy666999";
 
     //gen mapper 配置文件路径
     public static final String Mybatis_GenCfgFilePath ="/mybatis/generatorConfig.xml";
@@ -131,19 +131,19 @@ public class CodeGenerator {
      * @Param:object--->pojo的类型，pojoName---> pojo名字，pojoIncludeMultipartFile--->pojo是否包含MultipartFile文件
      * @Return:
      */
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
         genCodeByPoJoName(
-              new HttpPushLog(),
-              "httpPushLog",
-                      "http_push_log",
-                      "HTTP推送日志",
+              new SikongWayline(),
+              "sikongWayline",
+                      "sikong_wayline",
+                      "司空航线",
                       "algorithmCenter",
                       false,
-                      "mongo",
+                      "mysql",
                       "cn.kafuka.mapper",
                       "src/main/java");
-    }
+    }*/
 
     /**
      * @Author: zhangyong

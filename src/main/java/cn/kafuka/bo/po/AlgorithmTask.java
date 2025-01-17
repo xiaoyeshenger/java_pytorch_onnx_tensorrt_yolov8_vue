@@ -56,6 +56,12 @@ public class AlgorithmTask implements Serializable {
     @ApiModelProperty(value = "推送频率(每隔多少秒推送推理结果一次)")
     private Integer pushFrequency;
 
+    @ApiModelProperty(value = "置信度阈值")
+    private Float confThreshold;
+
+    @ApiModelProperty(value = "nms阈值")
+    private Float nmsThreshold;
+
     @ApiModelProperty(value = "模型计算工作目录")
     private String workDir;
 

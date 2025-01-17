@@ -1,5 +1,7 @@
 package cn.kafuka.mapper;
 
+import static cn.kafuka.mapper.AlgorithmModelDynamicSqlSupport.confThreshold;
+import static cn.kafuka.mapper.AlgorithmModelDynamicSqlSupport.nmsThreshold;
 import static cn.kafuka.mapper.AlgorithmTaskDynamicSqlSupport.*;
 import static org.mybatis.dynamic.sql.SqlBuilder.*;
 
@@ -68,6 +70,8 @@ public interface AlgorithmTaskMapper {
         @Result(column="streamServer_url", property="streamServerUrl", jdbcType=JdbcType.VARCHAR),
         @Result(column="skip_frame", property="skipFrame", jdbcType=JdbcType.BIGINT),
         @Result(column="push_frequency", property="pushFrequency", jdbcType=JdbcType.BIGINT),
+        @Result(column="conf_threshold", property="confThreshold", jdbcType=JdbcType.VARCHAR),
+        @Result(column="nms_threshold", property="nmsThreshold", jdbcType=JdbcType.VARCHAR),
         @Result(column="work_dir", property="workDir", jdbcType=JdbcType.VARCHAR),
         @Result(column="shell_key", property="shellKey", jdbcType=JdbcType.VARCHAR),
         @Result(column="firstExec_time", property="firstExecTime", jdbcType=JdbcType.BIGINT),
@@ -125,6 +129,8 @@ public interface AlgorithmTaskMapper {
                 .map(streamServerUrl).toProperty("streamServerUrl")
                 .map(skipFrame).toProperty("skipFrame")
                 .map(pushFrequency).toProperty("pushFrequency")
+                .map(confThreshold).toProperty("confThreshold")
+                .map(nmsThreshold).toProperty("nmsThreshold")
                 .map(workDir).toProperty("workDir")
                 .map(shellKey).toProperty("shellKey")
                 .map(firstexecTime).toProperty("firstExecTime")
@@ -160,6 +166,8 @@ public interface AlgorithmTaskMapper {
                 .map(streamServerUrl).toPropertyWhenPresent("streamServerUrl", record::getStreamServerUrl)
                 .map(skipFrame).toPropertyWhenPresent("skipFrame", record::getSkipFrame)
                 .map(pushFrequency).toPropertyWhenPresent("pushFrequency", record::getPushFrequency)
+                .map(confThreshold).toPropertyWhenPresent("confThreshold", record::getConfThreshold)
+                .map(nmsThreshold).toPropertyWhenPresent("nmsThreshold", record::getNmsThreshold)
                 .map(workDir).toPropertyWhenPresent("workDir", record::getWorkDir)
                 .map(shellKey).toPropertyWhenPresent("shellKey", record::getShellKey)
                 .map(firstexecTime).toPropertyWhenPresent("firstExecTime", record::getFirstExecTime)
@@ -180,25 +188,25 @@ public interface AlgorithmTaskMapper {
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<AlgorithmTask>> selectByExampleOne() {
-        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
+        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,confThreshold, nmsThreshold,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<List<AlgorithmTask>>> selectByExample() {
-        return SelectDSL.selectWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir, shellKey,firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
+        return SelectDSL.selectWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,confThreshold, nmsThreshold,workDir, shellKey,firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default QueryExpressionDSL<MyBatis3SelectModelAdapter<List<AlgorithmTask>>> selectDistinctByExample() {
-        return SelectDSL.selectDistinctWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
+        return SelectDSL.selectDistinctWithMapper(this::selectMany, id, taskName, taskNo, modelNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,confThreshold, nmsThreshold,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask);
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     default AlgorithmTask selectByPrimaryKey(Long id_) {
-        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
+        return SelectDSL.selectWithMapper(this::selectOne, id, taskName, taskNo, algorithmmodelName, customerNo, customerName, videobaseInfo, videoplayUrl, computingvideoplayUrl,pushVideoPlayUrl,streamServerUrl,skipFrame,pushFrequency,confThreshold, nmsThreshold,workDir,shellKey, firstexecTime, latestexecTime, alarmAmount, latestalarmTime, orderNum, taskStatus, pid, pidStartTime, pidStopTime, restartCount, restartMsg, createTime)
                 .from(algorithmTask)
                 .where(id, isEqualTo(id_))
                 .build()
@@ -221,6 +229,8 @@ public interface AlgorithmTaskMapper {
                 .set(streamServerUrl).equalTo(record::getStreamServerUrl)
                 .set(skipFrame).equalTo(record::getSkipFrame)
                 .set(pushFrequency).equalTo(record::getPushFrequency)
+                .set(confThreshold).equalTo(record::getConfThreshold)
+                .set(nmsThreshold).equalTo(record::getNmsThreshold)
                 .set(workDir).equalTo(record::getWorkDir)
                 .set(shellKey).equalTo(record::getShellKey)
                 .set(firstexecTime).equalTo(record::getFirstExecTime)
@@ -253,6 +263,8 @@ public interface AlgorithmTaskMapper {
                 .set(streamServerUrl).equalToWhenPresent(record::getStreamServerUrl)
                 .set(skipFrame).equalToWhenPresent(record::getSkipFrame)
                 .set(pushFrequency).equalToWhenPresent(record::getPushFrequency)
+                .set(confThreshold).equalToWhenPresent(record::getConfThreshold)
+                .set(nmsThreshold).equalToWhenPresent(record::getNmsThreshold)
                 .set(workDir).equalToWhenPresent(record::getWorkDir)
                 .set(shellKey).equalToWhenPresent(record::getShellKey)
                 .set(firstexecTime).equalToWhenPresent(record::getFirstExecTime)
@@ -283,6 +295,8 @@ public interface AlgorithmTaskMapper {
                 .set(computingvideoplayUrl).equalTo(record::getComputingVideoPlayUrl)
                 .set(pushVideoPlayUrl).equalTo(record::getPushVideoPlayUrl)
                 .set(streamServerUrl).equalTo(record::getStreamServerUrl)
+                .set(confThreshold).equalTo(record::getConfThreshold)
+                .set(nmsThreshold).equalTo(record::getNmsThreshold)
                 .set(skipFrame).equalTo(record::getSkipFrame)
                 .set(pushFrequency).equalTo(record::getPushFrequency)
                 .set(workDir).equalTo(record::getWorkDir)
@@ -320,6 +334,8 @@ public interface AlgorithmTaskMapper {
                 .set(streamServerUrl).equalToWhenPresent(record::getStreamServerUrl)
                 .set(skipFrame).equalToWhenPresent(record::getSkipFrame)
                 .set(pushFrequency).equalToWhenPresent(record::getPushFrequency)
+                .set(confThreshold).equalToWhenPresent(record::getConfThreshold)
+                .set(nmsThreshold).equalToWhenPresent(record::getNmsThreshold)
                 .set(workDir).equalToWhenPresent(record::getWorkDir)
                 .set(shellKey).equalToWhenPresent(record::getShellKey)
                 .set(firstexecTime).equalToWhenPresent(record::getFirstExecTime)
