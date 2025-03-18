@@ -47,12 +47,12 @@ public class SHA256Util {
         return DigestUtils.sha256Hex(pwd + salt);
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         String ori1 = getSHA256Salt("123456", "kfk20ac23sj99kfk");
         String ori2 = getSHA256Salt("test123", "kfk20ac23sj99kfk");
         System.out.println("1.-->"+ori1);
         System.out.println("2.-->"+ori2);
-    }
+    }*/
 
 }
 
