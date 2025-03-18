@@ -1,5 +1,6 @@
 package cn.kafuka.service;
 
+import cn.kafuka.bo.po.AlgorithmModel;
 import cn.kafuka.bo.vo.PageVo;
 import cn.kafuka.bo.dto.HttpPushLogPageReqDto;
 import cn.kafuka.bo.vo.PageVo;
@@ -37,10 +38,15 @@ public interface HttpPushLogService {
     /**
      * 4.推送告警结果给客户
      */
-    String pushInferenceResultToCustomer(String taskNo,JSONObject jsonObject);
+    String pushInferenceResultToCustomer(String taskNo, JSONObject jsonObject);
 
     /**
      * 5.再次推送告警结果给客户
      */
     Map<String, Object>  againPushLog(HttpPushLogReqDto httpPushLogReqDto);
+
+    /**
+     * 6.推送算法模型库变化给客户(增加模型、删除模型、修改模型都会推送给客户)
+     */
+    String pushModelBaseChangeToCustomer(String modelNo, String type, AlgorithmModel algorithmModel);
 }

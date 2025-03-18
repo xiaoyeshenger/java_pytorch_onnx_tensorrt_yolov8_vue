@@ -33,7 +33,6 @@ public class AlarmDataPageReqDto extends PageReqDto {
     @ApiModelProperty(name = "customerNo", value = "客户号", example = "xxx",dataType="String")
     private String customerNo;
 
-
     @ApiModelProperty(name = "startTime", value = "告警时间开始时间", example = "1567764943000",dataType="Long")
     @Digits(integer = 13,fraction = 0,message = "时间戳必须为13位数字(毫秒)")
     private Long startTime;

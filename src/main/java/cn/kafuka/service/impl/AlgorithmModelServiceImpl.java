@@ -1,8 +1,12 @@
 package cn.kafuka.service.impl;
 
+import cn.kafuka.bo.dto.AlgorithmModelListReqDto;
 import cn.kafuka.bo.po.AlgorithmTask;
-import cn.kafuka.mapper.AlgorithmTaskDynamicSqlSupport;
-import cn.kafuka.mapper.AlgorithmTaskMapper;
+import cn.kafuka.bo.po.RoleModel;
+import cn.kafuka.bo.vo.AlgorithmModelVo;
+import cn.kafuka.bo.vo.UserVo;
+import cn.kafuka.mapper.*;
+import cn.kafuka.service.HttpPushLogService;
 import cn.kafuka.util.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -14,8 +18,6 @@ import cn.kafuka.bo.vo.PageVo;
 import cn.kafuka.bo.dto.AlgorithmModelReqDto;
 import cn.kafuka.bo.dto.AlgorithmModelPageReqDto;
 import cn.kafuka.bo.po.AlgorithmModel;
-import cn.kafuka.mapper.AlgorithmModelMapper;
-import cn.kafuka.mapper.AlgorithmModelDynamicSqlSupport;
 import cn.kafuka.excel.AlgorithmModelExcelListener;
 import cn.kafuka.excel.AlgorithmModelExcelVo;
 import cn.kafuka.excel.FieldDupValidator;
@@ -34,6 +36,7 @@ import javax.validation.Validator;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 import java.net.URLEncoder;
 
@@ -63,9 +66,15 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
 
     private final FieldDupValidator fieldDupValidator;
 
+    private final ExecutorService executorService;
+
+    private final HttpPushLogService httpPushLogService;
+
     private final AlgorithmModelMapper algorithmModelMapper;
 
     private final AlgorithmTaskMapper algorithmTaskMapper;
+
+    private final RoleModelMapper roleModelMapper;
 
 
     @Override
@@ -142,7 +151,12 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
         //3.保存
         algorithmModelMapper.insert(algorithmModel);
 
-        //4.返回结果
+        //4.推送模型库变化信息给客户
+        executorService.execute(()->{
+            httpPushLogService.pushModelBaseChangeToCustomer(algorithmModel.getModelNo(),"add", algorithmModel);
+        });
+
+        //5.返回结果
         Map<String,Object> resultMap = new HashMap<>();
         resultMap.put("msg","添加算法模型信息成功");
         return resultMap;
@@ -169,6 +183,11 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
                     .where(AlgorithmModelDynamicSqlSupport.id, isEqualTo(id))
                     .build()
                     .execute();
+
+        //推送模型库变化信息给客户
+        executorService.execute(()->{
+            httpPushLogService.pushModelBaseChangeToCustomer(algorithmModel.getModelNo(),"delete", algorithmModel);
+        });
 
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("msg","删除算法模型成功");
@@ -239,7 +258,12 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
         //4.保存
         algorithmModelMapper.updateByPrimaryKey(algorithmModel);
 
-        //5.返回结果
+        //5.推送模型库变化信息给客户
+        executorService.execute(()->{
+            httpPushLogService.pushModelBaseChangeToCustomer(algorithmModel.getModelNo(),"update", algorithmModel);
+        });
+
+        //6.返回结果
         Map<String,Object> resultMap = new HashMap<>();
         resultMap.put("msg","更新算法模型信息成功");
         return resultMap;
@@ -332,6 +356,14 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
                 }
         );
     }
+
+
+    @Override
+    public List<AlgorithmModelVo> getAlgorithmModelVoList(AlgorithmModelListReqDto algorithmModelListReqDto) {
+        List<AlgorithmModelVo> algorithmModeVolList = algorithmModelMapper.getAlgorithmModelVoList();
+        return algorithmModeVolList;
+    }
+
 
     @Override
     public void downloadTemplateExcel(HttpServletResponse response){
@@ -444,6 +476,20 @@ public class AlgorithmModelServiceImpl implements AlgorithmModelService {
         List<String> modelNoList = algorithmModelPageReqDto.getModelNoList();
         if (!ObjUtil.isEmpty(modelNoList)) {
             builder.and(AlgorithmModelDynamicSqlSupport.modelNo, isIn(modelNoList));
+        }
+
+        //查看该角色是否配置了只能查询授权的模型列表
+        UserVo userVo = UserUtil.getUserVo();
+        Long roleId = userVo.getRoleId();
+        List<RoleModel> roleModelList = roleModelMapper.selectByExample()
+                .where(RoleModelDynamicSqlSupport.roleId, isEqualTo(roleId))
+                .build()
+                .execute();
+        if(!ObjUtil.isEmpty(roleModelList)){
+            List<Long> modelIdList = roleModelList.stream().map(RoleModel::getModelId).collect(Collectors.toList());
+            if(!ObjUtil.isEmpty(modelIdList)){
+                builder.and(AlgorithmModelDynamicSqlSupport.id, isIn(modelIdList));
+            }
         }
 
         //3.排序

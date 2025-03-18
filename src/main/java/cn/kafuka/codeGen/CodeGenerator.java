@@ -131,19 +131,21 @@ public class CodeGenerator {
      * @Param:object--->pojo的类型，pojoName---> pojo名字，pojoIncludeMultipartFile--->pojo是否包含MultipartFile文件
      * @Return:
      */
-/*    public static void main(String[] args) {
+/*
+    public static void main(String[] args) {
 
         genCodeByPoJoName(
-              new SikongWayline(),
-              "sikongWayline",
-                      "sikong_wayline",
-                      "司空航线",
+              new RoleModel(),
+              "RoleModel",
+                      "role_model",
+                      "角色模型关系",
                       "algorithmCenter",
                       false,
                       "mysql",
                       "cn.kafuka.mapper",
                       "src/main/java");
-    }*/
+    }
+*/
 
     /**
      * @Author: zhangyong
@@ -160,9 +162,9 @@ public class CodeGenerator {
      */
     public static void genCodeByPoJoName(Object object,String pojoName,String tableName,String poJoCnName,String moduleName, Boolean includeMultipartFile,String dbType,String targetPackage,String targetProject) {
         //1.生成后端代码
-        genReqDto(pojoName,object,includeMultipartFile,dbType,moduleName);
+        //genReqDto(pojoName,object,includeMultipartFile,dbType,moduleName);
 
-        genExcelVoAndListener(pojoName,object,dbType,moduleName);
+        //genExcelVoAndListener(pojoName,object,dbType,moduleName);
 
         if("mysql".equals(dbType)){
             genMapper(object.getClass(),tableName,targetPackage,targetProject);
@@ -170,10 +172,10 @@ public class CodeGenerator {
         if("mongo".equals(dbType)){
             genDao(pojoName,dbType,moduleName);
         }
-        genService(pojoName,poJoCnName,object,includeMultipartFile,dbType,moduleName);
-        genController(pojoName,poJoCnName,includeMultipartFile,dbType,moduleName);
+        //genService(pojoName,poJoCnName,object,includeMultipartFile,dbType,moduleName);
+        //genController(pojoName,poJoCnName,includeMultipartFile,dbType,moduleName);
         //2.生成前端vue和api.js代码
-        genVueAndApiJs(pojoName,poJoCnName,object,includeMultipartFile,dbType);
+        //genVueAndApiJs(pojoName,poJoCnName,object,includeMultipartFile,dbType);
     }
 
     //1.各种页面生成

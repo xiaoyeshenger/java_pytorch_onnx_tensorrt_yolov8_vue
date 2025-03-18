@@ -5,14 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmModelListReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/HttpPushFailMsgPageReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/HttpPushFailMsgReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/UpdateAlgorithmTaskReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/HttpPushFailMsg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/RoleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/RoleTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/vo/AlgorithmModelVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/HttpPushFailMsgController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/HttpPushFailMsgDynamicSqlSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/HttpPushFailMsgMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/HttpPushFailMsgService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/HttpPushFailMsgServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/shiro/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/shiro/JwtToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/shiro/ShiroConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/shiro/ShiroRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmTaskReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlgorithmTaskReqDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/po/AlgorithmTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sql/algorithm_center.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/sql/algrithm_center.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlarmDataPageReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/bo/dto/AlarmDataPageReqDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/codeGen/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/codeGen/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskDynamicSqlSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskDynamicSqlSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmTaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/config/DemoWebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlarmDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlarmDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmModelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/controller/AlgorithmTaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/dao/AlarmDataDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/dao/AlarmDataDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/enums/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/enums/ResponseStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/interceptor/LoginInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmModelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/mapper/AlgorithmModelMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/rocketMq/RestartTaskConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmModelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmModelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/AlgorithmTaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/HttpPushLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/HttpPushLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/PermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/PermissionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmModelServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/AlgorithmTaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/HttpPushLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/HttpPushLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/PermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/service/impl/PermissionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/IpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/IpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/SHA256Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/SHA256Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/UserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/UserUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,43 +89,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/ideaGitPro/dj-dock2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;e07a0e604e6298258d0e0c4761c98091&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "E:/ideaGitPro/algorithmCenter/data/sql",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "e07a0e604e6298258d0e0c4761c98091",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
+      <recent name="E:\ideaGitPro\algorithmCenter\src\main\java\cn\kafuka\interceptor" />
       <recent name="E:\ideaGitPro\algorithmCenter\src\main\java\cn\kafuka" />
+      <recent name="E:\ideaGitPro\algorithmCenter\data\front_code" />
       <recent name="E:\ideaGitPro\algorithmCenter\img" />
       <recent name="E:\ideaGitPro\algorithmCenter\data\sql" />
-      <recent name="E:\ideaGitPro\algorithmCenter\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ideaGitPro\algorithmCenter\data\doc" />
@@ -110,13 +147,13 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.kafuka.bo.po" />
+      <recent name="cn.kafuka.bo.vo" />
       <recent name="cn.kafuka.bo.dto" />
       <recent name="cn.kafuka.util" />
       <recent name="cn.kafuka.rocketMq" />
-      <recent name="cn.kafuka.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.AlgorithmCenterApplication">
+  <component name="RunManager" selected="Application.SHA256Util">
     <configuration name="CodeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.kafuka.codeGen.CodeGenerator" />
       <module name="algorithmCenter" />
@@ -124,6 +161,34 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.kafuka.codeGen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IpUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.util.IpUtil" />
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SHA256Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.kafuka.util.SHA256Util" />
+      <module name="algorithmCenter" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kafuka.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -145,20 +210,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VideoUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.kafuka.util.VideoUtil" />
-      <module name="algorithmCenter" />
-      <shortenClasspath name="ARGS_FILE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.kafuka.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <shortenClasspath name="ARGS_FILE" />
       <method v="2">
@@ -167,23 +218,6 @@
     </configuration>
     <configuration name="generated-requests | #26" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="26" requestIdentifier="#26" runType="Run single request">
       <method v="2" />
-    </configuration>
-    <configuration name="InferenceExceptionConsumerTest.sendMsg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="algorithmCenter" />
-      <shortenClasspath name="ARGS_FILE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.kafuka.rocketMq.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.kafuka.rocketMq" />
-      <option name="MAIN_CLASS_NAME" value="cn.kafuka.rocketMq.InferenceExceptionConsumerTest" />
-      <option name="METHOD_NAME" value="sendMsg" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <shortenClasspath name="ARGS_FILE" />
@@ -208,20 +242,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.IpUtil" />
+      <item itemvalue="Application.SHA256Util" />
       <item itemvalue="Application.CodeGenerator" />
-      <item itemvalue="Application.VideoUtil" />
       <item itemvalue="Application.StringUtil" />
       <item itemvalue="HTTP Request.generated-requests | #26" />
-      <item itemvalue="JUnit.InferenceExceptionConsumerTest.sendMsg" />
       <item itemvalue="Spring Boot.AlgorithmCenterApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.generated-requests | #26" />
+        <item itemvalue="Application.SHA256Util" />
         <item itemvalue="Application.CodeGenerator" />
+        <item itemvalue="Application.IpUtil" />
+        <item itemvalue="HTTP Request.generated-requests | #26" />
         <item itemvalue="Application.StringUtil" />
-        <item itemvalue="JUnit.InferenceExceptionConsumerTest.sendMsg" />
-        <item itemvalue="Application.VideoUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -336,14 +370,38 @@
       <workItem from="1736821603898" duration="694000" />
       <workItem from="1736924272790" duration="763000" />
       <workItem from="1737018182929" duration="1070000" />
-      <workItem from="1737077655822" duration="2274000" />
-    </task>
-    <task id="LOCAL-00051" summary="优化shell 调用">
-      <created>1720679177586</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1720679177586</updated>
+      <workItem from="1737077655822" duration="3255000" />
+      <workItem from="1737081978069" duration="1076000" />
+      <workItem from="1737334813754" duration="648000" />
+      <workItem from="1737341908960" duration="3370000" />
+      <workItem from="1737515073961" duration="1085000" />
+      <workItem from="1737625764316" duration="7557000" />
+      <workItem from="1737864015759" duration="646000" />
+      <workItem from="1738720266870" duration="18683000" />
+      <workItem from="1739000955186" duration="780000" />
+      <workItem from="1739153917931" duration="1675000" />
+      <workItem from="1739520503871" duration="3177000" />
+      <workItem from="1739683263930" duration="229000" />
+      <workItem from="1739683509147" duration="3175000" />
+      <workItem from="1739865568001" duration="349000" />
+      <workItem from="1739866140296" duration="2074000" />
+      <workItem from="1739929289350" duration="21355000" />
+      <workItem from="1741053653940" duration="37000" />
+      <workItem from="1741068497732" duration="7903000" />
+      <workItem from="1741172310496" duration="1149000" />
+      <workItem from="1741175770406" duration="567000" />
+      <workItem from="1741226782031" duration="14000" />
+      <workItem from="1741241218923" duration="613000" />
+      <workItem from="1741245766468" duration="1148000" />
+      <workItem from="1741251170635" duration="202000" />
+      <workItem from="1741327059434" duration="601000" />
+      <workItem from="1741655681996" duration="2714000" />
+      <workItem from="1741784968438" duration="55000" />
+      <workItem from="1741933302993" duration="1222000" />
+      <workItem from="1741937468846" duration="93000" />
+      <workItem from="1742171869856" duration="2255000" />
+      <workItem from="1742198833690" duration="6618000" />
+      <workItem from="1742285899280" duration="1016000" />
     </task>
     <task id="LOCAL-00052" summary="优化shell 调用">
       <created>1720680205826</created>
@@ -681,7 +739,14 @@
       <option name="project" value="LOCAL" />
       <updated>1734312268784</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="优化推理代码">
+      <created>1737080227520</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1737080227520</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

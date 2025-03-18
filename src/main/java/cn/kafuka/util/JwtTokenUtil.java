@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
+/**
  * @Author: zhangyong
  * description: JWT工具类
  * @Date: 2021-03-09 10:13
@@ -74,16 +74,14 @@ public class JwtTokenUtil {
      * 从token中获取用户信息
      */
     public UserVo getUserDetailsFromToken(String token) {
-        if(isTokenExpired(token)){
-            return null;
-        }
-        UserVo userDetail;
+        UserVo userDetail = null;
         try {
-            Claims claims = getClaimsFromToken(token);
-             userDetail = new ObjectMapper().readValue(claims.getSubject(),UserVo.class);
+            if(!isTokenExpired(token)){
+                Claims claims = getClaimsFromToken(token);
+                userDetail = new ObjectMapper().readValue(claims.getSubject(),UserVo.class);
+            }
         } catch (Exception e) {
-            log.error(e.getMessage(),e);
-            userDetail = null;
+            e.printStackTrace();
         }
         return userDetail;
     }

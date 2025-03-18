@@ -119,6 +119,23 @@ public class AlgorithmTaskController {
         return ResultVo.ok(algorithmTaskService.updateAlgorithmTask(algorithmTaskReqDto));
     }
 
+
+    /**
+     * @Author zhangyong
+     * @Description //(3) 通过任务号更新计算任务信息
+     * @Date 2023/11/23 14:06
+     * @Param
+     * @return
+     */
+    @Log(businessType = BusinessType.UPDATE)
+    @ApiOperation("通过任务号更新计算任务信息")
+    @PostMapping(value = "updateAlgorithmTaskByTaskNo", produces = {"application/json"})
+    public ResultVo<Map<String, Object>> updateAlgorithmTaskByTaskNo(
+            @Validated({ValidationUpdate.class}) @RequestBody UpdateAlgorithmTaskReqDto updateAlgorithmTaskReqDto
+    ){
+        return ResultVo.ok(algorithmTaskService.updateAlgorithmTaskByTaskNo(updateAlgorithmTaskReqDto));
+    }
+
     /**
      * @Author zhangyong
      * @Description //(4) 通过id查询计算任务信息

@@ -6,16 +6,11 @@ import static org.mybatis.dynamic.sql.SqlBuilder.*;
 
 import cn.kafuka.bo.po.AlgorithmModel;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Generated;
-import org.apache.ibatis.annotations.DeleteProvider;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.UpdateProvider;
+
+import cn.kafuka.bo.vo.AlgorithmModelVo;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.dynamic.sql.SqlBuilder;
 import org.mybatis.dynamic.sql.delete.DeleteDSL;
@@ -255,4 +250,9 @@ public interface AlgorithmModelMapper {
                 .build()
                 .execute();
     }
+
+
+    @Select("select name,model_no,latestTraining_time,online_time,label_list,status,create_time from algorithm_model;")
+    List<AlgorithmModelVo> getAlgorithmModelVoList();
+
 }

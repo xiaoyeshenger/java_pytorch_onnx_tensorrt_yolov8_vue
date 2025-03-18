@@ -107,14 +107,20 @@ public class RestartTaskConsumer implements RocketMQListener<MessageExt> {
                 //(2).再次启动推理脚本
                 algorithmTaskService.setAlgorithmTaskStatus(AlgorithmTaskStatusReqDto.builder().taskNo(taskNo).taskStatus((byte)1).build());
                 //(3).更新任务的重启次数
-                algorithmTaskMapper.update(update(AlgorithmTaskDynamicSqlSupport.algorithmTask)
+                algorithmTask.setPidStartTime(System.currentTimeMillis())
+                        .setPidStopTime(pushTimeStamp)
+                        .setRestartCount(restartCount+1)
+                        .setRestartMsg(inferMsg);
+                algorithmTaskMapper.updateByPrimaryKey(algorithmTask);
+
+                /*algorithmTaskMapper.update(update(AlgorithmTaskDynamicSqlSupport.algorithmTask)
                         .set(AlgorithmTaskDynamicSqlSupport.pidStartTime).equalToWhenPresent(System.currentTimeMillis())
                         .set(AlgorithmTaskDynamicSqlSupport.pidStopTime).equalToWhenPresent(pushTimeStamp)
                         .set(AlgorithmTaskDynamicSqlSupport.restartCount).equalToWhenPresent(restartCount+1)
                         .set(AlgorithmTaskDynamicSqlSupport.restartMsg).equalToWhenPresent(inferMsg)
                         .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(taskNo))
                         .build()
-                        .render(RenderingStrategies.MYBATIS3));
+                        .render(RenderingStrategies.MYBATIS3));*/
                 log.info("step00002---> infer_restart 完成任务的重启,taskNo:{},inferMsg:{},restartCount:{}",taskNo,inferMsg,restartCount+1);
             }
         }

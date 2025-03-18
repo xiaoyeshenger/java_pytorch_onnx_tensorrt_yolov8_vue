@@ -52,6 +52,11 @@ public enum ResponseStatus {
     TWO_PASSWORD_DIFF(1005, "两次输入的新密码不匹配!"),
     OLD_PASSWORD_ERROR(1006, "旧密码不匹配!"),
 
+    //token
+    TOKEN_MISSING(2001, "token缺失"),
+    TOKEN_INVALID(2002, "token校验失败"),
+    TOKEN_TIMEOUT(2003, "token失效"),
+
     /**
      * 其他通用错误
      * */

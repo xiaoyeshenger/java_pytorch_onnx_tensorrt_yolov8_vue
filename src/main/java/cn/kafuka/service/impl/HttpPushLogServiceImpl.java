@@ -30,6 +30,7 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.*;
 
+import static cn.kafuka.mapper.AlgorithmTaskDynamicSqlSupport.id;
 import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
 
 
@@ -65,6 +66,8 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
     private final CustomerMapper customerMapper;
 
     private final HttpPushLogDao httpPushLogDao;
+
+    private final HttpPushFailMsgMapper httpPushFailMsgMapper;
 
 
 
@@ -287,6 +290,7 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
         if(!ObjUtil.isEmpty(httpReqHeader)){
             headerMap = JSONObject.parseObject(httpReqHeader, Map.class);
         }
+        headerMap.put("dataType","inferenceResult");
 
         //3.动态修改注解参数值，将httpReqUrl及httpReqHeader等信息存入到HttpPushServiceLog的属性httpReqUrl及httpReqHeader中,再将propertyMap变量放入threadLocal实现线程之间资源隔离
         Map<String,Object> propertyMap = new HashMap<>();
@@ -316,7 +320,7 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
         }
         Integer code = jsonObjectResult.getInteger("code");
         if(code != 200){
-            String msg = jsonObject.getString("msg");
+            String msg = jsonObjectResult.getString("msg");
             log.info("推送推理结果给客户 {} 失败, 推送地址{}, errorCode:{}, msg:{}", customerName, httpReqUrl, code, msg);
             throw new IllegalArgumentException(resultStr);
         }
@@ -347,5 +351,92 @@ public class HttpPushLogServiceImpl implements HttpPushLogService {
         Map<String, Object> result = new HashMap<>();
         result.put("msg","推送成功" );
         return result;
+    }
+
+    @HttpPushServiceLog(name="推送模型库变化通知",pushType=915)
+    @Override
+    public String pushModelBaseChangeToCustomer(String modelNo, String type, AlgorithmModel algorithmModel) {
+        List<Customer> customerList = customerMapper.selectByExample().where(CustomerDynamicSqlSupport.status, isEqualTo((byte)1)).build().execute();
+        for (int i = 0; i < customerList.size(); i++) {
+            //(1).客户信息
+            Customer customer = customerList.get(i);
+
+            //(2).请求参数
+            String reqParamStr = JSONObject.toJSONString(algorithmModel);
+
+            //(3).客户的请求地址
+            //--1.客户的httpUrl
+            String httpReqUrl = customer.getHttpReqUrl().trim();
+            //--2.客户自定义的请求头
+            String httpReqHeader = customer.getHttpReqHeader().trim();
+            Map<String, Object> headerMap = new HashMap<>();
+            if(!ObjUtil.isEmpty(httpReqHeader)){
+                headerMap = JSONObject.parseObject(httpReqHeader, Map.class);
+            }
+            headerMap.put("dataType","modelBaseChange");
+            headerMap.put("subDataType",type);
+
+            //(4).动态修改注解参数值，将httpReqUrl及httpReqHeader等信息存入到HttpPushServiceLog的属性httpReqUrl及httpReqHeader中,再将propertyMap变量放入threadLocal实现线程之间资源隔离
+            Map<String,Object> propertyMap = new HashMap<>();
+            propertyMap.put("httpReqUrl",httpReqUrl);
+            propertyMap.put("httpReqHeader",httpReqHeader);
+            propertyMap.put("httpReqParam",reqParamStr);
+            propertyMap.put("modelNo",algorithmModel.getModelNo());
+            propertyMap.put("modelName",algorithmModel.getName());
+            propertyMap.put("customerNo",customer.getCustomerNo());
+            propertyMap.put("customerName",customer.getName());
+            threadLocal.set(propertyMap);
+            AnnoUtil.dynamicallyModifyAnnotationProperty(threadLocal.get(), HttpPushServiceLog.class, this.getClass(), Thread.currentThread().getStackTrace()[1].getMethodName());
+
+            //(5).发送请求
+            try {
+                JSONObject jsonObjectResult = HttpClientUtil.doPostJsonHeader(httpReqUrl, reqParamStr, headerMap);
+                String resultStr = ObjUtil.isEmpty(jsonObjectResult)?"":JSONObject.toJSONString(jsonObjectResult);
+                propertyMap.put("httpResult",resultStr);
+                threadLocal.set(propertyMap);
+                AnnoUtil.dynamicallyModifyAnnotationProperty(threadLocal.get(), HttpPushServiceLog.class, this.getClass(), Thread.currentThread().getStackTrace()[1].getMethodName());
+
+                //(6).处理返回结果
+                if(ObjUtil.isEmpty(jsonObjectResult)){
+                    log.info("推送模型库变化给客户平台 "+ customer.getName() + " 失败,返回为空");
+                }
+                Integer code = jsonObjectResult.getInteger("code");
+                if(code != 200){
+                    String msg = jsonObjectResult.getString("msg");
+                    log.info("推送模型库变化给客户 {} 失败, 推送地址{}, errorCode:{}, msg:{}", customer.getName(), httpReqUrl, code, msg);
+                }
+            }catch (Exception e){
+                log.info("推送模型库变化给客户 {} 失败, 推送地址{}, msg:{}", customer.getName(), httpReqUrl, e.getStackTrace());
+            }
+        }
+
+        return "success";
+    }
+
+    /**
+     * @Description 保存http推送失败的消息，以便定时去执行重新推送
+     */
+    private void saveHttpPushFailMsg(String customerNo, String customerName, String modelNo, String modelName, String httpReqUrl,String httpReqHeader,String reqParamStr,String httpResult,String errorMsg){
+
+        Long currentTimeMillis = System.currentTimeMillis();
+        HttpPushFailMsg httpPushFailMsg = HttpPushFailMsg.builder()
+                .type(911L)
+                .typeName("推送模型库变化通知消息")
+                .modelNo(modelNo)
+                .modelName(modelName)
+                .customerNo(customerNo)
+                .customerName(customerName)
+                .httpReqUrl(httpReqUrl)
+                .httpReqHeader(httpReqHeader)
+                .httpReqParam(reqParamStr)
+                .httpResult(httpResult)
+                .errorMsg(errorMsg)
+                .pushTime(currentTimeMillis)
+                .pushDate(DateUtil.timeStamp2dateStr(currentTimeMillis))
+                .needPush((byte)1)
+                .pushAmount(0)
+                .createTime(currentTimeMillis)
+                .build();
+        httpPushFailMsgMapper.insert(httpPushFailMsg);
     }
 }

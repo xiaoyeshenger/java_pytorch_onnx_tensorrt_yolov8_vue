@@ -23,10 +23,7 @@ public class IpUtil
     private static final Logger log = LoggerFactory.getLogger(IpUtil.class);
 
     // IP地址查询
-    public static final String IP_URL = "http://whois.pconline.com.cn/ipJson.jsp";
-
-    // 未知地址
-    public static final String UNKNOWN = "XX XX";
+    public static final String IP_URL = "https://api.vore.top/api/IPdata?ip=";
 
 
     public static String getIpAddr(HttpServletRequest request)
@@ -209,35 +206,31 @@ public class IpUtil
         return "未知";
     }
 
+    public static String getRealAddressByIP(String ip) {
 
-    public static String getRealAddressByIP(String ip)
-    {
-        String address = UNKNOWN;
-        // 内网不查询
-        if (internalIp(ip))
-        {
-            return "内网IP";
-        }
+        //1.默认地址为Unknown
+        String address = "Unknown";
 
-            try
-            {
-                Map<String,Object> paramMap = new HashMap<>();
-                paramMap.put("ip",ip);
-                paramMap.put("json",true);
-                JSONObject jsonObject = HttpClientUtil.doGet(IP_URL, paramMap);
-                if (ObjUtil.isEmpty(jsonObject))
-                {
-                    log.error("获取地理位置异常 {}", ip);
-                    return UNKNOWN;
+        //2.查询ip
+        try {
+            //1.通过ip查询实际地址接口
+            JSONObject jsonObject = HttpClientUtil.doGet(IP_URL + ip);
+            if (!ObjUtil.isEmpty(jsonObject)) {
+                Integer code = jsonObject.getInteger("code");
+                if (code == 200) {
+                    JSONObject adcode = jsonObject.getJSONObject("adcode");
+                    address = adcode.getString("o").replaceAll("\\s+", "");
+                    if (internalIp(ip)) {
+                        address =  "内网IP-" + address;
+                    }
+                }else {
+                    log.error("获取地理位置异常,ip:{},message:{}", ip, JSONObject.toJSONString(jsonObject));
                 }
-                String region = jsonObject.getString("pro");
-                String city = jsonObject.getString("city");
-                return String.format("%s %s", region, city);
             }
-            catch (Exception e)
-            {
-                log.error("获取地理位置异常 {}", ip);
-            }
+        }catch(Exception e){
+            log.error("获取地理位置异常,ip:{}", ip);
+            e.printStackTrace();
+        }
 
         return address;
     }
@@ -251,8 +244,9 @@ public class IpUtil
     }
 
 /*    public static void main(String[] args) {
-        String ipAddr = "223.168.1.134";
-         boolean b = checkIp(ipAddr);
-         System.out.println("结果:"+b);
+        //String ipAddr = "115.195.163.119";
+        String ipAddr = "localhost";
+         String addr = getRealAddressByIP(ipAddr);
+         System.out.println("结果:"+addr);
      }*/
 }

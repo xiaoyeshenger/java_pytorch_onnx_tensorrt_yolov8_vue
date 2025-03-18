@@ -43,6 +43,14 @@ public interface AlgorithmTaskService {
      */
     Map<String, Object> updateAlgorithmTask(AlgorithmTaskReqDto algorithmTaskReqDto);
 
+
+    /**
+     * @Description 更新计算任务
+     * @Date 2023/11/23 14:06
+     */
+    Map<String, Object> updateAlgorithmTaskByTaskNo(UpdateAlgorithmTaskReqDto updateAlgorithmTaskReqDto);
+
+
     /**
      * @Description 新增或更新计算任务
      * @Date 2023/11/23 14:06

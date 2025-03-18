@@ -1,5 +1,7 @@
 package cn.kafuka.controller;
 
+import cn.kafuka.bo.dto.AlgorithmModelListReqDto;
+import cn.kafuka.bo.po.AlgorithmModel;
 import cn.kafuka.bo.vo.ResultVo;
 import cn.kafuka.bo.vo.PageVo;
 import cn.kafuka.bo.dto.AlgorithmModelReqDto;
@@ -17,6 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import cn.kafuka.annotation.Log;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -118,6 +121,20 @@ public class AlgorithmModelController {
             @Validated({ValidationGroup.ValidationPage.class}) @RequestBody AlgorithmModelPageReqDto algorithmModelPageReqDto
     ){
         return ResultVo.ok(algorithmModelService.getAlgorithmModelListPageVo(algorithmModelPageReqDto));
+    }
+
+    /**
+     * @Author zhangyong
+     * @Description //(5) 查询所有的算法模型信息列表
+     * @Date 2023/11/22 16:06
+     * @Param
+     * @return
+     */
+    @ApiOperation("查询所有的算法模型信息列表")
+    @PostMapping(value = "getAlgorithmModelList", produces = { "application/json" })
+    public ResultVo<List<AlgorithmModel>> getAlgorithmModelList(@RequestBody AlgorithmModelListReqDto algorithmModelListReqDto
+    ){
+        return ResultVo.ok(algorithmModelService.getAlgorithmModelVoList(algorithmModelListReqDto));
     }
 
     /**

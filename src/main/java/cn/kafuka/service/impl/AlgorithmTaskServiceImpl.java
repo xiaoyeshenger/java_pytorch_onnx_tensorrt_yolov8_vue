@@ -1,8 +1,8 @@
 package cn.kafuka.service.impl;
 
 import cn.kafuka.bo.dto.*;
-import cn.kafuka.bo.po.AlgorithmModel;
-import cn.kafuka.bo.po.Customer;
+import cn.kafuka.bo.po.*;
+import cn.kafuka.bo.vo.UserVo;
 import cn.kafuka.mapper.*;
 import cn.kafuka.util.ShellCommandExecutorUtil;
 import cn.kafuka.util.*;
@@ -13,7 +13,6 @@ import com.github.pagehelper.PageHelper;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import cn.kafuka.bo.vo.PageVo;
-import cn.kafuka.bo.po.AlgorithmTask;
 import cn.kafuka.excel.AlgorithmTaskExcelListener;
 import cn.kafuka.excel.AlgorithmTaskExcelVo;
 import cn.kafuka.excel.FieldDupValidator;
@@ -86,6 +85,9 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
     private final RocketMQTemplate rocketMQTemplate;
 
 
+    private final RoleTaskMapper roleTaskMapper;
+
+
     @Override
     @Transactional
     public Map<String, Object> addAlgorithmTask(AlgorithmTaskReqDto algorithmTaskReqDto) {
@@ -133,13 +135,15 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
                 .setComputingVideoPlayUrl("dec_"+ taskNo + ".live.flv")
                 .setPushVideoPlayUrl("ori_" +taskNo + ".live.flv")
                 .setTaskStatus((byte)0)
+                .setRestartCount(0)
                 .setCreateTime(System.currentTimeMillis());
+
 
         if(ObjUtil.isEmpty(algorithmTask.getTaskName())){
             algorithmTask.setTaskName(algorithmModel.getName());
         }
 
-        if(ObjUtil.isEmpty(algorithmTask.getSkipFrame())){
+        if(ObjUtil.isEmpty(algorithmTask.getSkipFrame()) || algorithmTask.getSkipFrame() <= 0){
             algorithmTask.setSkipFrame(1);
         }
 
@@ -260,6 +264,93 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
             algorithmTask.setTaskName(algorithmModel.getName());
         }
 
+        if(ObjUtil.isEmpty(algorithmTask.getSkipFrame()) || algorithmTask.getSkipFrame() <= 0){
+            algorithmTask.setSkipFrame(1);
+        }
+
+        if(ObjUtil.isEmpty(algorithmTask.getPushFrequency())){
+            algorithmTask.setPushFrequency(60);
+        }
+
+        if(ObjUtil.isEmpty(algorithmTask.getNmsThreshold())){
+            algorithmTask.setNmsThreshold(algorithmModel.getNmsThreshold());
+        }
+
+        if(ObjUtil.isEmpty(algorithmTask.getConfThreshold())){
+            algorithmTask.setConfThreshold(algorithmModel.getConfThreshold());
+        }
+
+        algorithmTaskMapper.updateByPrimaryKey(algorithmTask);
+
+        //5.返回结果
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("msg","更新计算任务信息成功");
+        resultMap.put("taskNo",taskNo);
+        resultMap.put("computingVideoPlayUrl", streamPullServer + algorithmTask.getComputingVideoPlayUrl());
+        resultMap.put("pushVideoPlayUrl", streamPullServer + algorithmTask.getPushVideoPlayUrl());
+        return resultMap;
+    }
+
+    @Override
+    public Map<String, Object> updateAlgorithmTaskByTaskNo(UpdateAlgorithmTaskReqDto updateAlgorithmTaskReqDto) {
+        //1.参数校验
+        String modelNo = updateAlgorithmTaskReqDto.getModelNo();
+        AlgorithmModel algorithmModel = algorithmModelMapper.selectByExampleOne()
+                .where(AlgorithmModelDynamicSqlSupport.modelNo, isEqualTo(modelNo))
+                .build()
+                .execute();
+        if(ObjUtil.isEmpty(algorithmModel)){
+            throw new IllegalArgumentException("序列号为:"+modelNo+"的算法模型不存在");
+        }
+
+        String customerNo = updateAlgorithmTaskReqDto.getCustomerNo();
+        Customer customer = customerMapper.selectByExampleOne()
+                .where(CustomerDynamicSqlSupport.customerNo, isEqualTo(customerNo))
+                .build()
+                .execute();
+        if(ObjUtil.isEmpty(customer)){
+            throw new IllegalArgumentException("客户号为:"+customerNo+"的客户不存在");
+        }
+
+        String videoPlayUrl = updateAlgorithmTaskReqDto.getVideoPlayUrl();
+        if(!VideoUtil.isVideoPlayUrlLegitimate(videoPlayUrl)){
+            throw new IllegalArgumentException("视频地址不能正常播放");
+        }
+
+        //2.判断algorithmTask是否存在
+        String reqTaskNo = updateAlgorithmTaskReqDto.getTaskNo();
+        AlgorithmTask algorithmTask = algorithmTaskMapper.selectByExampleOne()
+                .where(AlgorithmTaskDynamicSqlSupport.taskNo, isEqualTo(reqTaskNo))
+                .build()
+                .execute();
+        if(ObjUtil.isEmpty(algorithmTask)){
+            throw new IllegalArgumentException("任务号为:"+reqTaskNo+"的计算任务不存在");
+        }
+        Byte taskStatus = algorithmTask.getTaskStatus();
+        if(taskStatus == 1){
+            throw new IllegalArgumentException("任务正在执行中,请停止任务后再操作");
+        }
+
+        //3.更新AlgorithmTask
+        //(1)复制AlgorithmTaskDto中的请求参数到AlgorithmTask
+        VoPoConverterUtil.beanConverterNotNull(updateAlgorithmTaskReqDto, algorithmTask);
+
+        //4.保存
+        String taskNo = algorithmTask.getTaskNo();
+        algorithmTask.setModelNo(modelNo)
+                .setAlgorithmModelName(algorithmModel.getName())
+                .setCustomerNo(customerNo)
+                .setCustomerName(customer.getName())
+                .setWorkDir(workDir)
+                .setShellKey(algorithmModel.getShellKey())
+                .setStreamServerUrl("dec_" + taskNo + "?sign=" + streamSign)
+                .setComputingVideoPlayUrl("dec_"+taskNo + ".live.flv")
+                .setPushVideoPlayUrl("ori_" +taskNo + ".live.flv");
+
+        if(ObjUtil.isEmpty(algorithmTask.getTaskName())){
+            algorithmTask.setTaskName(algorithmModel.getName());
+        }
+
         if(ObjUtil.isEmpty(algorithmTask.getSkipFrame())){
             algorithmTask.setSkipFrame(1);
         }
@@ -287,7 +378,7 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         return resultMap;
     }
 
-        @Override
+    @Override
         @Transactional
         public Map<String, Object> insertOrUpdateAlgorithmTask(AlgorithmTaskReqDto algorithmTaskReqDto) {
             //1.参数校验
@@ -810,6 +901,21 @@ public class AlgorithmTaskServiceImpl implements AlgorithmTaskService {
         if(!ObjUtil.isEmpty(customerNo)){
             builder.and(AlgorithmTaskDynamicSqlSupport.customerNo, isEqualTo(customerNo));
         }
+
+        //查看该角色是否配置了只能查询授权的任务列表
+        UserVo userVo = UserUtil.getUserVo();
+        Long roleId = userVo.getRoleId();
+        List<RoleTask> roleTaskList = roleTaskMapper.selectByExample()
+                .where(RoleModelDynamicSqlSupport.roleId, isEqualTo(roleId))
+                .build()
+                .execute();
+        if(!ObjUtil.isEmpty(roleTaskList)){
+            List<Long> taskIdList = roleTaskList.stream().map(RoleTask::getTaskId).collect(Collectors.toList());
+            if(!ObjUtil.isEmpty(taskIdList)){
+                builder.and(AlgorithmTaskDynamicSqlSupport.id, isIn(taskIdList));
+            }
+        }
+
 
         //3.排序
         builder.orderBy(AlgorithmTaskDynamicSqlSupport.algorithmmodelName,AlgorithmTaskDynamicSqlSupport.orderNum);

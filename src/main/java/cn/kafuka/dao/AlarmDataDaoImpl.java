@@ -2,8 +2,16 @@ package cn.kafuka.dao;
 
 import cn.kafuka.bo.dto.AlarmDataPageReqDto;
 import cn.kafuka.bo.po.AlarmData;
+import cn.kafuka.bo.po.RoleModel;
+import cn.kafuka.bo.po.RoleTask;
+import cn.kafuka.bo.vo.UserVo;
+import cn.kafuka.mapper.AlgorithmModelDynamicSqlSupport;
+import cn.kafuka.mapper.RoleModelDynamicSqlSupport;
+import cn.kafuka.mapper.RoleModelMapper;
+import cn.kafuka.mapper.RoleTaskMapper;
 import cn.kafuka.mongo.MongoBaseDaoImpl;
 import cn.kafuka.util.ObjUtil;
+import cn.kafuka.util.UserUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -11,8 +19,12 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
+import static org.mybatis.dynamic.sql.SqlBuilder.isIn;
 
 
 /**
@@ -24,6 +36,9 @@ import java.util.List;
  **/
 @Repository
 public class AlarmDataDaoImpl extends MongoBaseDaoImpl<AlarmData> implements AlarmDataDao {
+
+    @Resource
+    private RoleTaskMapper roleTaskMapper;
 
     @Override
     public AlarmData getAlarmDataById(String id) {
@@ -117,6 +132,20 @@ public class AlarmDataDaoImpl extends MongoBaseDaoImpl<AlarmData> implements Ala
             }
             if(endTime != null){
                 criteria.and("alarmTime").lte(endTime);
+            }
+        }
+
+        //查看该角色是否配置了只能查询授权的任务列表
+        UserVo userVo = UserUtil.getUserVo();
+        Long roleId = userVo.getRoleId();
+        List<RoleTask> roleTaskList = roleTaskMapper.selectByExample()
+                .where(RoleModelDynamicSqlSupport.roleId, isEqualTo(roleId))
+                .build()
+                .execute();
+        if(!ObjUtil.isEmpty(roleTaskList)){
+            List<String> taskNoList = roleTaskList.stream().map(RoleTask::getTaskNo).collect(Collectors.toList());
+            if(!ObjUtil.isEmpty(taskNoList)){
+                criteria.and("taskNo").in(taskNoList);
             }
         }
 

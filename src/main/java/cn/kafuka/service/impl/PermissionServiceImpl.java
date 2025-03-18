@@ -62,7 +62,7 @@ public class PermissionServiceImpl implements PermissionService {
 
         //2.设置参数
         Permission permission = VoPoConverterUtil.copyProperties(permissionReqDto, Permission.class);
-        permission.setCreateTime(new Date().getTime());
+        permission.setCreateTime(System.currentTimeMillis());
 
         //4.父级name
         Long parentId = permissionReqDto.getParentId();
