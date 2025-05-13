@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f1d762-17ea-4d6d-b795-0c291aba2ee4" name="Changes" comment="优化推理代码">
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/SHA256Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/SHA256Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/shiro/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/shiro/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/ShellCommandExecutorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/kafuka/util/ShellCommandExecutorUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,13 +360,20 @@
       <workItem from="1742171869856" duration="2255000" />
       <workItem from="1742198833690" duration="6618000" />
       <workItem from="1742285899280" duration="1111000" />
-    </task>
-    <task id="LOCAL-00053" summary="优化shell 调用">
-      <created>1720683340812</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1720683340812</updated>
+      <workItem from="1742290048199" duration="100000" />
+      <workItem from="1742301596240" duration="579000" />
+      <workItem from="1742306559551" duration="615000" />
+      <workItem from="1742380788242" duration="8990000" />
+      <workItem from="1742541897313" duration="643000" />
+      <workItem from="1742797915698" duration="2905000" />
+      <workItem from="1743381263863" duration="115000" />
+      <workItem from="1743411009631" duration="1576000" />
+      <workItem from="1744358560542" duration="17844000" />
+      <workItem from="1744937949615" duration="624000" />
+      <workItem from="1744947828472" duration="5267000" />
+      <workItem from="1745801747396" duration="1261000" />
+      <workItem from="1745804421994" duration="9421000" />
+      <workItem from="1746602328826" duration="604000" />
     </task>
     <task id="LOCAL-00054" summary="优化shell 调用">
       <created>1720683580305</created>
@@ -702,7 +711,14 @@
       <option name="project" value="LOCAL" />
       <updated>1742288568760</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="优化推理代码">
+      <created>1742290134153</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1742290134153</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

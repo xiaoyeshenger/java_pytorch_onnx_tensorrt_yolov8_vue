@@ -46,6 +46,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/sys/auth/getToken", "anon");
         filterChainDefinitionMap.put("/sys/auth/login", "anon");
         filterChainDefinitionMap.put("/sys/auth/getSmsCode", "anon");
+        filterChainDefinitionMap.put("/sys/httpPushLog/receiveHttpData", "anon");
 
         //(2).其余的所有请求都要经过JwtFilter过滤器处理(即必须有token才能访问)
         filterChainDefinitionMap.put("/**", "jwt");
